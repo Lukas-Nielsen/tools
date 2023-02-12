@@ -5,3 +5,32 @@
 .font-monospace {
 	font-family: monospace;
 }
+
+.card {
+	@apply bg-surface text-on-surface rounded px-1 py-2 shadow-md child:px-2 space-y-2.5 h-fit break-inside-avoid w-full flex flex-col;
+}
+
+.copy {
+	@apply font-monospace font-bold text-lg cursor-pointer;
+}
+
+input {
+	@apply bg-inherit text-inherit border-outline border-2 p-2 rounded-md placeholder:text-secondary;
+}
+
+.Toastify__toast-theme--dark {
+	@apply bg-primary text-on-primary;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info {
+	@apply bg-info text-on-info;
+}
+/* .Toastify__toast-theme--colored.Toastify__toast--success {
+	@apply bg-success text-success-content;
+} */
+/* .Toastify__toast-theme--colored.Toastify__toast--warning {
+	@apply bg-warning text-warning-content;
+} */
+.Toastify__toast-theme--colored.Toastify__toast--error {
+	@apply bg-error text-on-error;
+}
