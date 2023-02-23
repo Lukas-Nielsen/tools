@@ -101,6 +101,6 @@ const randomUpper = () => {
 };
 
 const randomSymbol = () => {
-	const symbols = "~*$%@#^&!?*'-=/,.{}()[]<>";
+	const symbols = "$%@#&!?-.{}()[]<>";
 	return symbols[random(0, symbols.length - 1)];
 };

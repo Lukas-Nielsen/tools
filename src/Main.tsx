@@ -1,10 +1,9 @@
 import * as React from "react";
 import * as Toast from "react-toastify";
 import "../node_modules/react-toastify/dist/ReactToastify.min.css";
-// import B64 from "./pages/B64";
+import Convert from "./pages/Convert";
 import DateTime from "./pages/DateTime";
 import Hash from "./pages/Hash";
-// import Hex from "./pages/Hex";
 import IP from "./pages/IP";
 import Mac from "./pages/Mac";
 import Password from "./pages/Password";
@@ -21,8 +20,7 @@ const Main = () => {
 				<Hash />
 				<Mac />
 				<DateTime />
-				{/* <Hex /> */}
-				{/* <B64 /> */}
+				<Convert />
 			</div>
 		</>
 	);
