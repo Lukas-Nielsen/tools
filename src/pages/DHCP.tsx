@@ -29,6 +29,7 @@ export const DHCP = () => {
 			});
 			setResult(callback);
 		}
+		setResult(undefined);
 	}, [net, start, description, input]);
 
 	return (
@@ -65,7 +66,7 @@ export const DHCP = () => {
 			<h4>Ergebnis</h4>
 			<div className="px-4">
 				<textarea
-					className="cursor-pointer break-words w-full"
+					className="copy break-words w-full"
 					title="klicken zum Kopieren"
 					onClick={() => {
 						result && Copy(result ?? "", "Ergebnis kopiert.");

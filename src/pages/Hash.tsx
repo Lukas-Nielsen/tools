@@ -24,7 +24,7 @@ const Hash = () => {
 	return (
 		<div className="card">
 			<h3>Hashes</h3>
-			<div className="p-4">
+			<div className="px-4">
 				<input
 					placeholder="was möchtest du hashen?"
 					onChange={newHash}

@@ -113,7 +113,7 @@ const Convert = () => {
 				</select>
 			</div>
 			<h4>Eingabe</h4>
-			<div className="p-4">
+			<div className="px-4">
 				<textarea
 					className="w-full"
 					placeholder="Zeichenkette"
@@ -123,7 +123,7 @@ const Convert = () => {
 			</div>
 			<h4>Ergebnis</h4>
 			<div
-				className="p-4 cursor-pointer break-words"
+				className="px-4 copy break-words"
 				title="klicken zum Kopieren"
 				onClick={() => Copy(to, "Ergebnis kopiert.")}
 			>

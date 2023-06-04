@@ -11,7 +11,7 @@
 }
 
 .copy {
-	@apply font-monospace font-bold text-lg cursor-pointer;
+	@apply font-monospace font-bold text-lg cursor-copy;
 }
 
 input,

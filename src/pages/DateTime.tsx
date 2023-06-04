@@ -20,7 +20,7 @@ const DateTime = () => {
 		<div className="card">
 			<h3>Zeitrechner</h3>
 			<h4>Unixtimestamp</h4>
-			<div className="p-4">
+			<div className="px-4">
 				<input
 					placeholder="Unixtimestamp"
 					value={unix}
@@ -28,7 +28,7 @@ const DateTime = () => {
 				></input>
 			</div>
 			<h4>Datum & Uhrzeit</h4>
-			<div className="p-4">
+			<div className="px-4">
 				<input
 					type="datetime-local"
 					value={date}

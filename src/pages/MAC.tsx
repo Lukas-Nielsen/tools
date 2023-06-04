@@ -31,8 +31,8 @@ const Mac = () => {
 
 	return (
 		<div className="card">
-			<h3>MAC-Adresse Formatieren</h3>
-			<div className="p-4">
+			<h3>MAC-Adresse formatieren</h3>
+			<div className="px-4">
 				<input placeholder="MAC-Adresse" onChange={newFormat}></input>
 			</div>
 			<h4>kleinbuchstaben</h4>
