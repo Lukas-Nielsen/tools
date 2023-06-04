@@ -1,20 +1,15 @@
-import * as React from "react";
-import { toast } from "react-toastify";
+import React, { ChangeEvent, useState } from "react";
+import Copy from "../functions/copy";
 
 const Mac = () => {
-	function Copy(msg: string) {
-		navigator.clipboard.writeText(msg);
-		toast.info("MAC kopiert");
-	}
-
-	const [mac, setMac] = React.useState({
+	const [mac, setMac] = useState({
 		lower: "",
 		upper: "",
 		dash: "",
 		colon: "",
 	});
 
-	function newFormat(e: React.ChangeEvent<HTMLInputElement>) {
+	const newFormat = (e: ChangeEvent<HTMLInputElement>) => {
 		let text = e.target.value;
 		if (text.length === 12 || text.length === 17) {
 			text = text.replaceAll(":", "");
@@ -32,7 +27,7 @@ const Mac = () => {
 					.join(":"),
 			});
 		}
-	}
+	};
 
 	return (
 		<div className="card">
@@ -41,19 +36,31 @@ const Mac = () => {
 				<input placeholder="MAC-Adresse" onChange={newFormat}></input>
 			</div>
 			<h4>kleinbuchstaben</h4>
-			<div className="copy" onClick={() => Copy(mac.lower)}>
+			<div
+				className="copy"
+				onClick={() => Copy(mac.lower, "MAC kopiert.")}
+			>
 				{mac.lower} &nbsp;
 			</div>
 			<h4>GROSSBUCHSTABEN</h4>
-			<div className="copy" onClick={() => Copy(mac.upper)}>
+			<div
+				className="copy"
+				onClick={() => Copy(mac.upper, "MAC kopiert.")}
+			>
 				{mac.upper} &nbsp;
 			</div>
 			<h4>mit "-"</h4>
-			<div className="copy" onClick={() => Copy(mac.dash)}>
+			<div
+				className="copy"
+				onClick={() => Copy(mac.dash, "MAC kopiert.")}
+			>
 				{mac.dash} &nbsp;
 			</div>
 			<h4>mit ":"</h4>
-			<div className="copy" onClick={() => Copy(mac.colon)}>
+			<div
+				className="copy"
+				onClick={() => Copy(mac.colon, "MAC kopiert.")}
+			>
 				{mac.colon} &nbsp;
 			</div>
 		</div>

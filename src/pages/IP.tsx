@@ -1,16 +1,11 @@
-import * as React from "react";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import Copy from "../functions/copy";
 
 const IP = () => {
-	function Copy(msg: string) {
-		navigator.clipboard.writeText(msg);
-		toast.info("IP kopiert");
-	}
+	const [ipv4, setIpv4] = useState<string>("unbekannt");
+	const [ipv6] = useState<string>("unbekannt");
 
-	const [ipv4, setIpv4] = React.useState<string>("unbekannt");
-	const [ipv6, setIpv6] = React.useState<string>("unbekannt");
-
-	React.useEffect(() => {
+	useEffect(() => {
 		fetch("https://ip4.lukasnielsen.de")
 			.then((res) => {
 				if (res.ok) {
@@ -20,8 +15,7 @@ const IP = () => {
 			})
 			.then((text) => {
 				setIpv4(text);
-			})
-			.catch(() => {});
+			}).catch;
 		// fetch("https://ip6.lukasnielsen.de")
 		// 	.then((res) => {
 		// 		if (res.ok) {
@@ -41,7 +35,7 @@ const IP = () => {
 				<div
 					className="copy"
 					onClick={() => {
-						Copy(ipv4);
+						Copy(ipv4, "IP kopiert.");
 					}}
 				>
 					{ipv4}
@@ -50,7 +44,7 @@ const IP = () => {
 				<div
 					className="copy"
 					onClick={() => {
-						Copy(ipv6);
+						Copy(ipv6, "IP kopiert.");
 					}}
 				>
 					{ipv6}

@@ -1,14 +1,8 @@
-import * as React from "react";
-import {toast} from "react-toastify"
-import Refresh from "./../icons/Refresh";
+import React, { useEffect, useState } from "react";
+import Copy from "../functions/copy";
+import { ArrowsClockwise } from "@phosphor-icons/react";
 
 const Password = () => {
-
-	function Copy(msg: string) {
-		navigator.clipboard.writeText(msg);
-		toast.info("Passwort kopiert")
-	}
-
 	type passwordType = {
 		a: string;
 		b: string;
@@ -16,42 +10,52 @@ const Password = () => {
 		d: string;
 	};
 
-	const [password, setPassword] = React.useState<passwordType>({
+	const [password, setPassword] = useState<passwordType>({
 		a: "",
 		b: "",
 		c: "",
 		d: "",
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setPassword(generatePassword());
-		return () => {};
 	}, []);
-
-	function newPasswords() {
-		setPassword(generatePassword());
-	}
 
 	return (
 		<div className="card relative">
-			<div onClick={newPasswords} className="cursor-pointer absolute top-2 right-2 w-fit">
-				<Refresh size={30} />
+			<div
+				onClick={() => setPassword(generatePassword())}
+				className="cursor-pointer absolute top-2 right-2 w-fit"
+			>
+				<ArrowsClockwise size={30} />
 			</div>
 			<h3>Passwörter</h3>
 			<h4>8 Zeichen</h4>
-			<div className="copy" onClick={() => Copy(password.a)}>
+			<div
+				className="copy"
+				onClick={() => Copy(password.a, "Passwort kopiert.")}
+			>
 				{password.a}
 			</div>
 			<h4>10 Zeichen</h4>
-			<div className="copy" onClick={() => Copy(password.b)}>
+			<div
+				className="copy"
+				onClick={() => Copy(password.b, "Passwort kopiert.")}
+			>
 				{password.b}
 			</div>
 			<h4>18 Zeichen</h4>
-			<div className="copy" onClick={() => Copy(password.c)}>
+			<div
+				className="copy"
+				onClick={() => Copy(password.c, "Passwort kopiert.")}
+			>
 				{password.c}
 			</div>
 			<h4>30 Zeichen</h4>
-			<div className="copy" onClick={() => Copy(password.d)}>
+			<div
+				className="copy"
+				onClick={() => Copy(password.d, "Passwort kopiert.")}
+			>
 				{password.d}
 			</div>
 		</div>
@@ -70,9 +74,9 @@ const generatePassword = () => {
 };
 
 const getPassword = (length: number) => {
-	let password: string = "";
+	let password = "";
 	for (let i = 0; i < length; i++) {
-		let choice = random(0, 3);
+		const choice = random(0, 3);
 		if (choice === 0) {
 			password += randomLower();
 		} else if (choice === 1) {

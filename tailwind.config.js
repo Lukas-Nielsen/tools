@@ -47,7 +47,8 @@ module.exports = {
 			},
 			themes: [
 				{
-					name: "dark",
+					name: "dark-theme",
+					mediaQuery: "@media (prefers-color-scheme: dark)",
 					extend: {
 						colors: {
 							primary: "#D0BCFF",
