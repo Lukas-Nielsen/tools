@@ -16,17 +16,6 @@ const IP = () => {
 			.then((text) => {
 				setIpv4(text);
 			}).catch;
-		// fetch("https://ip6.lukasnielsen.de")
-		// 	.then((res) => {
-		// 		if (res.ok) {
-		// 			return res.text();
-		// 		}
-		// 		return "unbekant";
-		// 	})
-		// 	.then((text) => {
-		// 		setIpv6(text);
-		// 	})
-		// 	.catch(() => {});
 	}, []);
 	return (
 		<>

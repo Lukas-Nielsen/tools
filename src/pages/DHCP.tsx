@@ -79,41 +79,10 @@ export const DHCP = () => {
 	);
 };
 
-// const ipToNumber = (ip: string): number => {
-// 	let ipNumber = 0;
-
-// 	const ipArr = ip.split(".");
-// 	if (ipArr.length !== 4) return 0;
-
-// 	if (isNaN(parseInt(ipArr[3]))) return 0;
-// 	ipNumber += parseInt(ipArr[3]);
-
-// 	if (isNaN(parseInt(ipArr[2]))) return 0;
-// 	ipNumber += parseInt(ipArr[2]) * 256;
-
-// 	if (isNaN(parseInt(ipArr[1]))) return 0;
-// 	ipNumber += parseInt(ipArr[1]) * 256 * 256;
-
-// 	if (isNaN(parseInt(ipArr[0]))) return 0;
-// 	ipNumber += parseInt(ipArr[0]) * 256 * 256 * 256;
-
-// 	return ipNumber;
-// };
-
 const ipToNumber = (ip: string) =>
 	ip
 		.split(".")
 		.reduce((sum, x, i) => sum + (parseInt(x) << (8 * (3 - i))), 0);
+
 const numberToIP = (ip: number) =>
 	[24, 16, 8, 0].map((n) => (ip >> n) & 0xff).join(".");
-
-// const numberToIP = (input: number): string => {
-// 	const ipArr: number[] = [];
-
-// 	ipArr[3] = input % 256;
-// 	ipArr[2] = (input - ipArr[3]) % (256 * 256);
-// 	ipArr[1] = (input - ipArr[2] - ipArr[3]) % (256 * 256 * 256);
-// 	ipArr[0] = input - ipArr[1] - ipArr[2] - ipArr[3];
-
-// 	return ipArr.join(".");
-// };
