@@ -5,9 +5,10 @@ import Convert from "./pages/Convert";
 import DateTime from "./pages/DateTime";
 import Hash from "./pages/Hash";
 import IP from "./pages/IP";
-import Mac from "./pages/Mac";
+import Mac from "./pages/MAC";
 import Password from "./pages/Password";
 import UserAgent from "./pages/UserAgent";
+import { DHCP } from "./pages/DHCP";
 
 const Main = () => {
 	return (
@@ -28,6 +29,7 @@ const Main = () => {
 				<Mac />
 				<DateTime />
 				<Convert />
+				<DHCP />
 			</div>
 		</>
 	);

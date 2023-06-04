@@ -3,10 +3,10 @@ import Copy from "../functions/copy";
 import { Swap } from "@phosphor-icons/react";
 
 const Convert = () => {
-	type selectOption = {
+	interface selectOption {
 		key: string;
 		displayName: string;
-	};
+	}
 
 	const modes: selectOption[] = [
 		{

@@ -3,12 +3,12 @@ import Copy from "../functions/copy";
 import { ArrowsClockwise } from "@phosphor-icons/react";
 
 const Password = () => {
-	type passwordType = {
+	interface passwordType {
 		a: string;
 		b: string;
 		c: string;
 		d: string;
-	};
+	}
 
 	const [password, setPassword] = useState<passwordType>({
 		a: "",
