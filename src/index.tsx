@@ -8,8 +8,3 @@ if (element) {
 	const root = createRoot(element);
 	root.render(<Main />);
 }
-
-if (process.env.NODE_ENV && process.env.NODE_ENV === "development")
-	new EventSource("esbuild").addEventListener("change", () =>
-		location.reload()
-	);
