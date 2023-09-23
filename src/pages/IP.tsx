@@ -12,7 +12,7 @@ const IP = () => {
 					if (res.ok) {
 						return res.text();
 					}
-					return "unbekant";
+					return undefined;
 				})
 				.then((text) => {
 					setIpv4(text);
