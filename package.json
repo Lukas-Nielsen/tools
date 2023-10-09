@@ -51,7 +51,7 @@
 		"tailwindcss": "^3.3.3",
 		"tailwindcss-themer": "^3.1.2",
 		"typescript": "^5.2.2",
-		"vite": "^4.4.9",
+		"vite": "^4.4.11",
 		"vite-plugin-checker": "^0.6.2"
 	}
 }
