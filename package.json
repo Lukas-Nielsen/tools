@@ -26,7 +26,7 @@
 		"useTabs": true
 	},
 	"dependencies": {
-		"@phosphor-icons/react": "^2.0.13",
+		"@phosphor-icons/react": "^2.0.14",
 		"crypto-js": "^4.2.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
