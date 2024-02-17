@@ -87,7 +87,7 @@ const Convert = () => {
 
 	return (
 		<Card mb="xs">
-			<Group>
+			<Group wrap="nowrap">
 				<Select
 					value={fromMode}
 					onChange={(e) => setFromMode(e || "")}
