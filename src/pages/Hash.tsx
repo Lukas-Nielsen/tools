@@ -3,7 +3,7 @@ import sha256 from "crypto-js/sha256";
 import sha1 from "crypto-js/sha1";
 import md5 from "crypto-js/md5";
 import hex from "crypto-js/enc-hex";
-import Copy from "../functions/copy";
+import { Card, Code, CopyButton, Input, Tooltip } from "@mantine/core";
 
 const Hash = () => {
 	const [hash, setHash] = useState({
@@ -22,36 +22,34 @@ const Hash = () => {
 	};
 
 	return (
-		<div className="card">
+		<Card mb="xs">
 			<h3>Hashes</h3>
-			<div className="px-4">
-				<input
-					placeholder="was möchtest du hashen?"
-					onChange={newHash}
-				></input>
-			</div>
+			<Input placeholder="was möchtest du hashen?" onChange={newHash} />
 			<h4>MD5</h4>
-			<div
-				className="copy !text-sm !sm:text-lg"
-				onClick={() => Copy(hash.md5, "Hash kopiert.")}
-			>
-				{hash.md5} &nbsp;
-			</div>
+			<CopyButton value={hash.md5}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
+						<Code onClick={copy}>{hash.md5}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>SHA1</h4>
-			<div
-				className="copy !text-xs !sm:text-sm"
-				onClick={() => Copy(hash.sha1, "Hash kopiert.")}
-			>
-				{hash.sha1} &nbsp;
-			</div>
+			<CopyButton value={hash.sha1}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
+						<Code onClick={copy}>{hash.sha1}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>SHA256</h4>
-			<div
-				className="copy !text-[0.49rem] !sm:text-[0.65rem]"
-				onClick={() => Copy(hash.sha256, "Hash kopiert.")}
-			>
-				{hash.sha256} &nbsp;
-			</div>
-		</div>
+			<CopyButton value={hash.sha256}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
+						<Code onClick={copy}>{hash.sha256}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

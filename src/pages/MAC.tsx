@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import Copy from "../functions/copy";
+import { Card, Code, CopyButton, Input, Tooltip } from "@mantine/core";
 
 const Mac = () => {
 	const [mac, setMac] = useState({
@@ -30,40 +30,42 @@ const Mac = () => {
 	};
 
 	return (
-		<div className="card">
+		<Card mb="xs">
 			<h3>MAC-Adresse formatieren</h3>
-			<div className="px-4">
-				<input placeholder="MAC-Adresse" onChange={newFormat}></input>
-			</div>
+			<Input placeholder="MAC-Adresse" onChange={newFormat} />
 			<h4>kleinbuchstaben</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(mac.lower, "MAC kopiert.")}
-			>
-				{mac.lower} &nbsp;
-			</div>
+			<CopyButton value={mac.lower}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "MAC kopiert" : "MAC kopieren"}>
+						<Code onClick={copy}>{mac.lower}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>GROSSBUCHSTABEN</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(mac.upper, "MAC kopiert.")}
-			>
-				{mac.upper} &nbsp;
-			</div>
+			<CopyButton value={mac.upper}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "MAC kopiert" : "MAC kopieren"}>
+						<Code onClick={copy}>{mac.upper}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>mit "-"</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(mac.dash, "MAC kopiert.")}
-			>
-				{mac.dash} &nbsp;
-			</div>
+			<CopyButton value={mac.dash}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "MAC kopiert" : "MAC kopieren"}>
+						<Code onClick={copy}>{mac.dash}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>mit ":"</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(mac.colon, "MAC kopiert.")}
-			>
-				{mac.colon} &nbsp;
-			</div>
-		</div>
+			<CopyButton value={mac.colon}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "MAC kopiert" : "MAC kopieren"}>
+						<Code onClick={copy}>{mac.colon}&nbsp;</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

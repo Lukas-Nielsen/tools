@@ -12,15 +12,12 @@ export default defineConfig({
 		}),
 		VitePWA({
 			registerType: "autoUpdate",
-			manifest: false,
 			workbox: {
 				globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
 			},
-			devOptions: {
-				enabled: true,
-			},
 		}),
 	],
+	base: "/",
 	server: { open: true, port: 3000 },
 	build: { emptyOutDir: true, outDir: "./build" },
 });

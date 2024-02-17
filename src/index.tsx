@@ -1,10 +1,15 @@
 import { createRoot } from "react-dom/client";
 import React from "react";
 import Main from "./Main";
-import "./index.css";
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 
 const element = document.querySelector("#root");
 if (element) {
 	const root = createRoot(element);
-	root.render(<Main />);
+	root.render(
+		<MantineProvider defaultColorScheme="auto">
+			<Main />
+		</MantineProvider>,
+	);
 }

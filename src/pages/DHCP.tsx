@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Copy from "../functions/copy";
+import { Card, CopyButton, Input, Textarea, Tooltip } from "@mantine/core";
 
 export const DHCP = () => {
 	const [net, setNet] = useState<string>();
@@ -24,7 +24,7 @@ export const DHCP = () => {
 				const mac = item[0].replaceAll(/[^0-9A-Fa-f]/g, "");
 
 				callback += `netsh dhcp server scope ${net} add reservedip ${numberToIP(
-					ip + index
+					ip + index,
 				)} ${mac} "${description || ""}"\n`;
 			});
 			setResult(callback);
@@ -33,49 +33,40 @@ export const DHCP = () => {
 	}, [net, start, description, input]);
 
 	return (
-		<div className="card">
-			<h4>DHCP-Reservierungen</h4>
-			<div className="flex gap-2 child:w-full flex-col px-4">
-				<h4>Netz (192.168.178.0)</h4>
-				<input
-					value={net}
-					onChange={(e) => setNet(e.target.value)}
-					placeholder="192.168.178.0"
-				/>
-				<h4>Start IP</h4>
-				<input
-					value={start}
-					onChange={(e) => setStart(e.target.value)}
-					placeholder="192.168.178.200"
-				/>
-				<h4>Beschreibung</h4>
-				<input
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
-					placeholder="IP-Telefon"
-				/>
-			</div>
+		<Card mb="xs">
+			<h3>DHCP-Reservierungen</h3>
+			<h4>Netz (192.168.178.0)</h4>
+			<Input
+				value={net}
+				onChange={(e) => setNet(e.target.value)}
+				placeholder="192.168.178.0"
+			/>
+			<h4>Start IP</h4>
+			<Input
+				value={start}
+				onChange={(e) => setStart(e.target.value)}
+				placeholder="192.168.178.200"
+			/>
+			<h4>Beschreibung</h4>
+			<Input
+				value={description}
+				onChange={(e) => setDescription(e.target.value)}
+				placeholder="IP-Telefon"
+			/>
 			<h4>MAC-Adressen</h4>
-			<div className="px-4">
-				<textarea
-					className="w-full"
-					value={input}
-					onChange={(e) => setInput(e.target.value)}
-				/>
-			</div>
+			<Textarea
+				value={input}
+				onChange={(e) => setInput(e.target.value)}
+			/>
 			<h4>Ergebnis</h4>
-			<div className="px-4">
-				<textarea
-					className="copy break-words w-full"
-					title="klicken zum Kopieren"
-					onClick={() => {
-						result && Copy(result ?? "", "Ergebnis kopiert.");
-					}}
-					readOnly
-					value={result}
-				/>
-			</div>
-		</div>
+			<CopyButton value={result || ""}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
+						<Textarea onClick={copy} readOnly value={result} />
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

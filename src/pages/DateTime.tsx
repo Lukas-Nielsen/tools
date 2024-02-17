@@ -1,8 +1,9 @@
+import { Card, Input } from "@mantine/core";
 import React, { ChangeEvent, useState } from "react";
 
 const DateTime = () => {
 	const [unix, setUnix] = useState<string>(
-		(new Date().getTime() / 1000).toFixed(0)
+		(new Date().getTime() / 1000).toFixed(0),
 	);
 	const [date, setDate] = useState<string>(toIsoString(new Date()));
 
@@ -17,25 +18,17 @@ const DateTime = () => {
 	};
 
 	return (
-		<div className="card">
+		<Card mb="xs">
 			<h3>Zeitrechner</h3>
 			<h4>Unixtimestamp</h4>
-			<div className="px-4">
-				<input
-					placeholder="Unixtimestamp"
-					value={unix}
-					onChange={handleUnix}
-				></input>
-			</div>
+			<Input
+				placeholder="Unixtimestamp"
+				value={unix}
+				onChange={handleUnix}
+			/>
 			<h4>Datum & Uhrzeit</h4>
-			<div className="px-4">
-				<input
-					type="datetime-local"
-					value={date}
-					onChange={handleDate}
-				></input>
-			</div>
-		</div>
+			<Input type="datetime-local" value={date} onChange={handleDate} />
+		</Card>
 	);
 };
 

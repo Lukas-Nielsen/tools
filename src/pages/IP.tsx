@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Copy from "../functions/copy";
+import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
 
 const IP = () => {
 	const [ipv4, setIpv4] = useState<string>();
@@ -25,28 +25,24 @@ const IP = () => {
 		};
 	}, []);
 	return (
-		<>
-			<div className="card md:grid grid-cols-2 grid-rows-2 grid-flow-col auto-rows-auto">
-				<div>IPv4 Adresse</div>
-				<div
-					className="copy"
-					onClick={() => {
-						if (ipv4) Copy(ipv4, "IP kopiert.");
-					}}
-				>
-					{ipv4 || "unbekannt"}
-				</div>
-				<div>IPv6 Adresse</div>
-				<div
-					className="copy"
-					onClick={() => {
-						if (ipv6) Copy(ipv6, "IP kopiert.");
-					}}
-				>
-					{ipv6 || "unbekannt"}
-				</div>
-			</div>
-		</>
+		<Card mb="xs">
+			<h4>IPv4 Adresse</h4>
+			<CopyButton value={ipv4 || ""}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
+						<Code onClick={copy}>{ipv4 || "unbekannt"}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+			<h4>IPv6 Adresse</h4>
+			<CopyButton value={ipv6 || ""}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
+						<Code onClick={copy}>{ipv6 || "unbekannt"}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Copy from "../functions/copy";
-import { ArrowsClockwise } from "@phosphor-icons/react";
+import { IconRefresh } from "@tabler/icons-react";
+import { Card, Code, CopyButton, Group, Tooltip } from "@mantine/core";
 
 const Password = () => {
 	interface passwordType {
@@ -22,43 +22,60 @@ const Password = () => {
 	}, []);
 
 	return (
-		<div className="card relative">
-			<div
-				onClick={() => setPassword(generatePassword())}
-				className="cursor-pointer absolute top-2 right-2 w-fit"
-			>
-				<ArrowsClockwise size={30} />
-			</div>
-			<h3>Passwörter</h3>
+		<Card mb="xs">
+			<Group>
+				<h3>Passwörter</h3>
+				<IconRefresh size={30} onClick={() => generatePassword()} />
+			</Group>
 			<h4>8 Zeichen</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(password.a, "Passwort kopiert.")}
-			>
-				{password.a}
-			</div>
+			<CopyButton value={password.a}>
+				{({ copied, copy }) => (
+					<Tooltip
+						label={
+							copied ? "Passwort kopiert" : "Passwort kopieren"
+						}
+					>
+						<Code onClick={copy}>{password.a}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>10 Zeichen</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(password.b, "Passwort kopiert.")}
-			>
-				{password.b}
-			</div>
+			<CopyButton value={password.b}>
+				{({ copied, copy }) => (
+					<Tooltip
+						label={
+							copied ? "Passwort kopiert" : "Passwort kopieren"
+						}
+					>
+						<Code onClick={copy}>{password.b}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>18 Zeichen</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(password.c, "Passwort kopiert.")}
-			>
-				{password.c}
-			</div>
+			<CopyButton value={password.c}>
+				{({ copied, copy }) => (
+					<Tooltip
+						label={
+							copied ? "Passwort kopiert" : "Passwort kopieren"
+						}
+					>
+						<Code onClick={copy}>{password.c}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
 			<h4>30 Zeichen</h4>
-			<div
-				className="copy"
-				onClick={() => Copy(password.d, "Passwort kopiert.")}
-			>
-				{password.d}
-			</div>
-		</div>
+			<CopyButton value={password.d}>
+				{({ copied, copy }) => (
+					<Tooltip
+						label={
+							copied ? "Passwort kopiert" : "Passwort kopieren"
+						}
+					>
+						<Code onClick={copy}>{password.d}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

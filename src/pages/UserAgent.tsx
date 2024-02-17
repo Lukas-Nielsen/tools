@@ -1,19 +1,24 @@
 import React from "react";
-import Copy from "../functions/copy";
+import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
 
 const UserAgent = () => {
 	return (
-		<div className="card">
-			<div>User-Agent</div>
-			<div
-				className="copy !text-xs inline-block"
-				onClick={() =>
-					Copy(window.navigator.userAgent, "User-Agent kopiert!")
-				}
-			>
-				{window.navigator.userAgent}
-			</div>
-		</div>
+		<Card mb="xs">
+			<h4>User-Agent</h4>
+			<CopyButton value={window.navigator.userAgent}>
+				{({ copied, copy }) => (
+					<Tooltip
+						label={
+							copied
+								? "User-Agent kopiert"
+								: "User-Agent kopieren"
+						}
+					>
+						<Code onClick={copy}>{window.navigator.userAgent}</Code>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 

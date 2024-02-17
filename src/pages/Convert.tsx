@@ -1,25 +1,32 @@
+import { IconArrowsExchange } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
-import Copy from "../functions/copy";
-import { Swap } from "@phosphor-icons/react";
+import {
+	Card,
+	CopyButton,
+	Group,
+	Select,
+	Textarea,
+	Tooltip,
+} from "@mantine/core";
 
 const Convert = () => {
 	interface selectOption {
-		key: string;
-		displayName: string;
+		value: string;
+		label: string;
 	}
 
 	const modes: selectOption[] = [
 		{
-			key: "string",
-			displayName: "Zeichenkette",
+			value: "string",
+			label: "Zeichenkette",
 		},
 		{
-			key: "b64",
-			displayName: "base64",
+			value: "b64",
+			label: "base64",
 		},
 		{
-			key: "hex",
-			displayName: "HEX",
+			value: "hex",
+			label: "HEX",
 		},
 	];
 
@@ -79,57 +86,42 @@ const Convert = () => {
 	};
 
 	return (
-		<div className="card">
-			<div className="flex gap-2 child:w-full">
-				<select
+		<Card mb="xs">
+			<Group>
+				<Select
 					value={fromMode}
-					onChange={(e) => setFromMode(e.target.value)}
-				>
-					{modes.map((entry) => {
-						return (
-							<option key={entry.key} value={entry.key}>
-								{entry.displayName}
-							</option>
-						);
-					})}
-				</select>
-				<div
-					className="!w-max pt-2 cursor-pointer"
-					onClick={switchMode}
-				>
-					<Swap />
-				</div>
-				<select
+					onChange={(e) => setFromMode(e || "")}
+					data={modes}
+					checkIconPosition="right"
+				/>
+				<IconArrowsExchange onClick={switchMode} />
+				<Select
 					value={toMode}
-					onChange={(e) => setToMode(e.target.value)}
-				>
-					{modes.map((entry) => {
-						return (
-							<option key={entry.key} value={entry.key}>
-								{entry.displayName}
-							</option>
-						);
-					})}
-				</select>
-			</div>
+					onChange={(e) => setToMode(e || "")}
+					data={modes}
+					checkIconPosition="right"
+				/>
+			</Group>
 			<h4>Eingabe</h4>
-			<div className="px-4">
-				<textarea
-					className="w-full"
-					placeholder="Zeichenkette"
-					value={from}
-					onChange={(e) => setFrom(e.target.value)}
-				></textarea>
-			</div>
+			<Textarea
+				placeholder="Zeichenkette"
+				value={from}
+				onChange={(e) => setFrom(e.target.value)}
+			/>
 			<h4>Ergebnis</h4>
-			<div
-				className="px-4 copy break-words"
-				title="klicken zum Kopieren"
-				onClick={() => Copy(to, "Ergebnis kopiert.")}
-			>
-				{to}
-			</div>
-		</div>
+			<CopyButton value={to}>
+				{({ copied, copy }) => (
+					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
+						<Textarea
+							title="klicken zum Kopieren"
+							onClick={copy}
+							readOnly
+							value={to}
+						/>
+					</Tooltip>
+				)}
+			</CopyButton>
+		</Card>
 	);
 };
 
