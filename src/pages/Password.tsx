@@ -25,7 +25,10 @@ const Password = () => {
 		<Card mb="xs">
 			<Group>
 				<h3>Passwörter</h3>
-				<IconRefresh size={30} onClick={() => generatePassword()} />
+				<IconRefresh
+					size={30}
+					onClick={() => setPassword(generatePassword())}
+				/>
 			</Group>
 			<h4>8 Zeichen</h4>
 			<CopyButton value={password.a}>
