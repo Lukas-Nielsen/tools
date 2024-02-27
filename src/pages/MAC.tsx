@@ -40,7 +40,6 @@ const Mac = () => {
 			<h3>MAC-Adresse formatieren</h3>
 			<Stack>
 				<TextInput
-					label="MAC-Adresse"
 					placeholder="MAC-Adresse"
 					value={mac}
 					onChange={(e) => setMac(e.currentTarget.value)}
