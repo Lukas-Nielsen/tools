@@ -4,6 +4,7 @@ import sha1 from "crypto-js/sha1";
 import md5 from "crypto-js/md5";
 import hex from "crypto-js/enc-hex";
 import { Card, Code, CopyButton, Input, Tooltip } from "@mantine/core";
+import classes from "../main.module.css";
 
 const Hash = () => {
 	const [hash, setHash] = useState({
@@ -29,7 +30,9 @@ const Hash = () => {
 			<CopyButton value={hash.md5}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy}>{hash.md5}&nbsp;</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{hash.md5}&nbsp;
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -37,7 +40,9 @@ const Hash = () => {
 			<CopyButton value={hash.sha1}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy}>{hash.sha1}&nbsp;</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{hash.sha1}&nbsp;
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -45,7 +50,9 @@ const Hash = () => {
 			<CopyButton value={hash.sha256}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy}>{hash.sha256}&nbsp;</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{hash.sha256}&nbsp;
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>

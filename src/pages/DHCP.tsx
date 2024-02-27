@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, CopyButton, Input, Textarea, Tooltip } from "@mantine/core";
+import classes from "../main.module.css";
 
 export const DHCP = () => {
 	const [net, setNet] = useState<string>();
@@ -62,7 +63,12 @@ export const DHCP = () => {
 			<CopyButton value={result || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
-						<Textarea onClick={copy} readOnly value={result} />
+						<Textarea
+							onClick={copy}
+							readOnly
+							value={result}
+							className={classes.copy}
+						/>
 					</Tooltip>
 				)}
 			</CopyButton>

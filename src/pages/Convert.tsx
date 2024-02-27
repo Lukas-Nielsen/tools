@@ -8,6 +8,7 @@ import {
 	Textarea,
 	Tooltip,
 } from "@mantine/core";
+import classes from "../main.module.css";
 
 const Convert = () => {
 	interface selectOption {
@@ -117,6 +118,7 @@ const Convert = () => {
 							onClick={copy}
 							readOnly
 							value={to}
+							className={classes.copy}
 						/>
 					</Tooltip>
 				)}

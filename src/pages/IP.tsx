@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
+import classes from "../main.module.css";
 
 const IP = () => {
 	const [ipv4, setIpv4] = useState<string>();
@@ -30,7 +31,9 @@ const IP = () => {
 			<CopyButton value={ipv4 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
-						<Code onClick={copy}>{ipv4 || "unbekannt"}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{ipv4 || "unbekannt"}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -38,7 +41,9 @@ const IP = () => {
 			<CopyButton value={ipv6 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
-						<Code onClick={copy}>{ipv6 || "unbekannt"}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{ipv6 || "unbekannt"}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>

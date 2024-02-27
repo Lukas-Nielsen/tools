@@ -21,3 +21,7 @@
 		width: 80%;
 	}
 }
+
+.copy {
+	cursor: copy;
+}

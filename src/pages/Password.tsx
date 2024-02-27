@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IconRefresh } from "@tabler/icons-react";
 import { Card, Code, CopyButton, Group, Tooltip } from "@mantine/core";
+import classes from "../main.module.css";
 
 const Password = () => {
 	interface passwordType {
@@ -38,7 +39,9 @@ const Password = () => {
 							copied ? "Passwort kopiert" : "Passwort kopieren"
 						}
 					>
-						<Code onClick={copy}>{password.a}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{password.a}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -50,7 +53,9 @@ const Password = () => {
 							copied ? "Passwort kopiert" : "Passwort kopieren"
 						}
 					>
-						<Code onClick={copy}>{password.b}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{password.b}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -62,7 +67,9 @@ const Password = () => {
 							copied ? "Passwort kopiert" : "Passwort kopieren"
 						}
 					>
-						<Code onClick={copy}>{password.c}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{password.c}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
@@ -74,7 +81,9 @@ const Password = () => {
 							copied ? "Passwort kopiert" : "Passwort kopieren"
 						}
 					>
-						<Code onClick={copy}>{password.d}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{password.d}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>

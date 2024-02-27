@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
+import classes from "../main.module.css";
 
 const UserAgent = () => {
 	return (
@@ -14,7 +15,9 @@ const UserAgent = () => {
 								: "User-Agent kopieren"
 						}
 					>
-						<Code onClick={copy}>{window.navigator.userAgent}</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{window.navigator.userAgent}
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>

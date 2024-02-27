@@ -8,6 +8,7 @@ import {
 	TextInput,
 	Tooltip,
 } from "@mantine/core";
+import classes from "../main.module.css";
 
 const Mac = () => {
 	const [mac, setMac] = useState<string>("");
@@ -68,7 +69,9 @@ const Mac = () => {
 			<CopyButton value={format()}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "MAC kopiert" : "MAC kopieren"}>
-						<Code onClick={copy}>{format()}&nbsp;</Code>
+						<Code onClick={copy} className={classes.copy}>
+							{format()}&nbsp;
+						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
