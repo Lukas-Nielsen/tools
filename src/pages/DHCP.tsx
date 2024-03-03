@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CopyButton, Input, Textarea, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
 
-export const DHCP = () => {
+const DHCP = () => {
 	const [net, setNet] = useState<string>();
 	const [start, setStart] = useState<string>();
 	const [description, setDescription] = useState<string>();
@@ -83,3 +83,5 @@ const ipToNumber = (ip: string) =>
 
 const numberToIP = (ip: number) =>
 	[24, 16, 8, 0].map((n) => (ip >> n) & 0xff).join(".");
+
+export default DHCP;
