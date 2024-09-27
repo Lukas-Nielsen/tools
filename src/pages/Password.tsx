@@ -145,7 +145,14 @@ const generatePassword = () => {
 const getPassword = (
 	length = 20,
 	characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$+*",
-) =>
-	Array.from(crypto.getRandomValues(new Uint32Array(length)))
-		.map((x) => characters[x % characters.length])
-		.join("");
+) => {
+	const password = [];
+	const maxMultiple = Math.floor(256 / characters.length) * characters.length;
+	while (password.length < length) {
+		const byte = crypto.getRandomValues(new Uint8Array(1))[0];
+		if (byte < maxMultiple) {
+			password.push(characters[byte % characters.length]);
+		}
+	}
+	return password.join("");
+};
