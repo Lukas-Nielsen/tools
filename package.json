@@ -27,21 +27,21 @@
 		"useTabs": true
 	},
 	"dependencies": {
-		"@hyper-fetch/core": "^5.7.5",
-		"@hyper-fetch/react": "^5.7.5",
+		"@hyper-fetch/core": "^6.0.0",
+		"@hyper-fetch/react": "^6.0.0",
 		"@mantine/core": "^7.14.1",
 		"@mantine/hooks": "^7.7.1",
-		"@tabler/icons-react": "^3.23.0",
+		"@tabler/icons-react": "^3.24.0",
 		"crypto-js": "^4.2.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.3.1",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
 		"vite-plugin-pwa": "^0.21.0"
 	},
 	"devDependencies": {
 		"@types/crypto-js": "^4.2.2",
 		"@types/node": "^22.9.0",
-		"@types/react": "^18.3.8",
-		"@types/react-dom": "^18.3.0",
+		"@types/react": "^19.0.1",
+		"@types/react-dom": "^19.0.1",
 		"@typescript-eslint/eslint-plugin": "^7.16.1",
 		"@typescript-eslint/parser": "^7.18.0",
 		"@vitejs/plugin-react": "^4.3.2",
