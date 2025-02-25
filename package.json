@@ -29,7 +29,7 @@
 	"dependencies": {
 		"@hyper-fetch/core": "^6.0.0",
 		"@hyper-fetch/react": "^6.0.0",
-		"@mantine/core": "^7.16.1",
+		"@mantine/core": "^7.17.0",
 		"@mantine/hooks": "^7.7.1",
 		"@tabler/icons-react": "^3.30.0",
 		"crypto-js": "^4.2.0",
