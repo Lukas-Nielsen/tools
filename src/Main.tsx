@@ -8,8 +8,8 @@ import Hash from "./pages/Hash";
 import Mac from "./pages/MAC";
 import DateTime from "./pages/DateTime";
 import Convert from "./pages/Convert";
-import DNS from "./pages/DNS";
 import DHCP from "./pages/DHCP";
+import ConvertFile from "./pages/ConvertFile";
 
 const Main = () => {
 	return (
@@ -22,7 +22,7 @@ const Main = () => {
 				<Mac />
 				<DateTime />
 				<Convert />
-				<DNS />
+				<ConvertFile />
 				<DHCP />
 			</div>
 		</Center>
