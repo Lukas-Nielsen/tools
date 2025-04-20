@@ -1,48 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
+import { client } from "../func/client";
+import { useFetch } from "@hyper-fetch/react";
+import { DateInterval } from "@hyper-fetch/core";
+
+const getIpV4 = client.createRequest<string>()({
+	endpoint: "https://ip4.lukasnielsen.de",
+});
+
+const getIpV6 = client.createRequest<string>()({
+	endpoint: "https://ip6.lukasnielsen.de",
+});
 
 const IP = () => {
-	const [ipv4, setIpv4] = useState<string>();
-	const [ipv6] = useState<string>();
+	const { data: ip4 } = useFetch(getIpV4, {
+		refreshTime: DateInterval.minute * 15,
+		refresh: true,
+	});
+	const { data: ip6 } = useFetch(getIpV6, {
+		refreshTime: DateInterval.minute * 15,
+		refresh: true,
+	});
 
-	useEffect(() => {
-		const get = () => {
-			fetch("https://ip4.lukasnielsen.de")
-				.then((res) => {
-					if (res.ok) {
-						return res.text();
-					}
-					return undefined;
-				})
-				.then((text) => {
-					setIpv4(text);
-				})
-				.catch(() => setIpv4(undefined));
-		};
-		const interval = setInterval(get, 60 * 1000);
-		return () => {
-			clearInterval(interval);
-		};
-	}, []);
 	return (
 		<Card mb="xs">
 			<h4>IPv4 Adresse</h4>
-			<CopyButton value={ipv4 || ""}>
+			<CopyButton value={ip4 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
-							{ipv4 || "unbekannt"}
+							{ip4 || "unbekannt"}
 						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
 			<h4>IPv6 Adresse</h4>
-			<CopyButton value={ipv6 || ""}>
+			<CopyButton value={ip6 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
-							{ipv6 || "unbekannt"}
+							{ip6 || "unbekannt"}
 						</Code>
 					</Tooltip>
 				)}
