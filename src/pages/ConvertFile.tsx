@@ -37,7 +37,11 @@ const ConvertFile = () => {
 				break;
 			case "json2csv":
 				try {
-					setTo(json2csv(JSON.parse(from)));
+					setTo(
+						json2csv(JSON.parse(from), {
+							expandArrayObjects: true,
+						}),
+					);
 				} catch (error) {}
 				break;
 		}
