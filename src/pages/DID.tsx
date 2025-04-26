@@ -17,7 +17,7 @@ const DID = () => {
 			type: "text/csv",
 		});
 		element.href = URL.createObjectURL(file);
-		element.download = `${form.getValues().base.replace(/[^\d]/, "")}.csv`;
+		element.download = `${form.getValues().base.replaceAll(/[^\d]/g, "")}.csv`;
 		document.body.appendChild(element);
 		element.click();
 		element.remove();
