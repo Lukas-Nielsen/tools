@@ -1,18 +1,23 @@
 import { IconArrowsExchange } from "@tabler/icons-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
 	Group,
 	Select,
+	Stack,
 	Textarea,
+	Title,
 	Tooltip,
 } from "@mantine/core";
 import classes from "../main.module.css";
+import { useForm } from "@mantine/form";
 
 const Convert = () => {
+	type TMode = "string" | "hex" | "b64";
+
 	interface selectOption {
-		value: string;
+		value: TMode;
 		label: string;
 	}
 
@@ -31,14 +36,11 @@ const Convert = () => {
 		},
 	];
 
-	const [from, setFrom] = useState("");
-	const [to, setTo] = useState("");
-	const [fromMode, setFromMode] = useState("string");
-	const [toMode, setToMode] = useState("b64");
+	const [result, setResult] = useState<string>("");
 
-	useEffect(() => {
+	const handleChange = () => {
 		const convertToResult = (str: string) => {
-			switch (toMode) {
+			switch (form.getValues().toMode) {
 				case "b64":
 					try {
 						return window.btoa(str);
@@ -58,7 +60,7 @@ const Convert = () => {
 		};
 
 		const convertFromInput = (str: string) => {
-			switch (fromMode) {
+			switch (form.getValues().fromMode) {
 				case "b64":
 					try {
 						return window.atob(str);
@@ -76,49 +78,61 @@ const Convert = () => {
 					return str;
 			}
 		};
-		setTo(convertToResult(convertFromInput(from)));
-	}, [from, fromMode, toMode]);
+
+		setResult(convertToResult(convertFromInput(form.getValues().from)));
+	};
+
+	const form = useForm<{
+		from: string;
+		to: string;
+		fromMode: TMode;
+		toMode: TMode;
+	}>({
+		initialValues: { from: "", to: "", fromMode: "string", toMode: "b64" },
+		onValuesChange: handleChange,
+	});
 
 	const switchMode = () => {
-		const tempFrom = fromMode;
-		const tempTo = toMode;
-		setFromMode(tempTo);
-		setToMode(tempFrom);
+		const tempFrom = form.getValues().fromMode;
+		const tempTo = form.getValues().toMode;
+		form.setFieldValue("fromMode", tempTo);
+		form.setFieldValue("toMode", tempFrom);
 	};
 
 	return (
-		<Card mb="xs">
+		<Card mb="xs" component={Stack}>
+			<Title order={3}>konvertieren zwischen Formaten</Title>
 			<Group wrap="nowrap">
 				<Select
-					value={fromMode}
-					onChange={(e) => setFromMode(e || "")}
+					key={form.key("fromMode")}
+					{...form.getInputProps("fromMode")}
 					data={modes}
 					checkIconPosition="right"
 				/>
 				<IconArrowsExchange onClick={switchMode} />
 				<Select
-					value={toMode}
-					onChange={(e) => setToMode(e || "")}
+					key={form.key("toMode")}
+					{...form.getInputProps("toMode")}
 					data={modes}
 					checkIconPosition="right"
 				/>
 			</Group>
-			<h4>Eingabe</h4>
 			<Textarea
+				key={form.key("from")}
+				{...form.getInputProps("from")}
 				placeholder="Zeichenkette"
-				value={from}
-				onChange={(e) => setFrom(e.target.value)}
+				label="Eingabe"
 			/>
-			<h4>Ergebnis</h4>
-			<CopyButton value={to}>
+			<CopyButton value={result}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
 						<Textarea
 							title="klicken zum Kopieren"
 							onClick={copy}
 							readOnly
-							value={to}
+							value={result}
 							className={classes.copy}
+							label="Ergebnis"
 						/>
 					</Tooltip>
 				)}

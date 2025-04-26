@@ -100,7 +100,6 @@ const DHCP = () => {
 							readOnly
 							value={result}
 							className={classes.copy}
-							labelProps={{ fw: "bold", fz: "1.5rem" }}
 						/>
 					</Tooltip>
 				)}
