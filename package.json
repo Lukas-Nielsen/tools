@@ -30,10 +30,12 @@
 		"@hyper-fetch/core": "^6.0.1",
 		"@hyper-fetch/react": "^6.0.1",
 		"@mantine/core": "^7.17.0",
+		"@mantine/dates": "^7.17.5",
 		"@mantine/form": "^7.17.5",
 		"@mantine/hooks": "^7.7.1",
 		"@tabler/icons-react": "^3.31.0",
 		"crypto-js": "^4.2.0",
+		"dayjs": "^1.11.13",
 		"json-2-csv": "^5.5.9",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"
