@@ -1,14 +1,15 @@
-import { IconArrowsExchange } from "@tabler/icons-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
-	Group,
 	Select,
+	Stack,
 	Textarea,
+	Title,
 	Tooltip,
 } from "@mantine/core";
 import { json2csv, csv2json } from "json-2-csv";
+import { useForm } from "@mantine/form";
 import classes from "../main.module.css";
 
 type TMode = "csv2json" | "json2csv";
@@ -24,61 +25,63 @@ const ConvertFile = () => {
 		{ value: "csv2json", label: "CSV 2 JSON" },
 	];
 
-	const [from, setFrom] = useState("");
-	const [to, setTo] = useState("");
-	const [mode, setMode] = useState<TMode>("json2csv");
+	const [result, setResult] = useState("");
 
-	useEffect(() => {
-		switch (mode) {
+	const handleChange = () => {
+		switch (form.getValues().mode) {
 			case "csv2json":
 				try {
-					setTo(JSON.stringify(csv2json(from)));
+					setResult(JSON.stringify(csv2json(form.getValues().from)));
 				} catch (error) {
-					setTo("");
+					setResult("");
 				}
 				break;
 			case "json2csv":
 				try {
-					setTo(
-						json2csv(JSON.parse(from), {
+					setResult(
+						json2csv(JSON.parse(form.getValues().from), {
 							expandArrayObjects: true,
 						}),
 					);
 				} catch (error) {
-					setTo("");
+					setResult("");
 				}
 				break;
 		}
-	}, [from, mode]);
+	};
+
+	const form = useForm<{ from: string; mode: TMode }>({
+		initialValues: { from: "", mode: "json2csv" },
+		onValuesChange: handleChange,
+	});
 
 	return (
-		<Card mb="xs">
-			<Group wrap="nowrap">
-				<Select
-					value={mode}
-					onChange={(e) =>
-						setMode((e as unknown as TMode) || "json2csv")
-					}
-					data={modes}
-					checkIconPosition="right"
-				/>
-			</Group>
-			<h4>Eingabe</h4>
-			<Textarea
-				placeholder="Quelle"
-				value={from}
-				onChange={(e) => setFrom(e.target.value)}
+		<Card mb="xs" component={Stack}>
+			<Title order={3} mb="0">
+				CSV/JSON Konverter
+			</Title>
+			<Select
+				key={form.key("mode")}
+				{...form.getInputProps("mode")}
+				data={modes}
+				checkIconPosition="right"
 			/>
-			<h4>Ergebnis</h4>
-			<CopyButton value={to}>
+			<Textarea
+				key={form.key("from")}
+				{...form.getInputProps("from")}
+				placeholder="Quelle"
+				label="Eingabe"
+			/>
+			<CopyButton value={result}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
 						<Textarea
 							title="klicken zum Kopieren"
 							onClick={copy}
 							readOnly
-							value={to}
+							value={result}
 							className={classes.copy}
+							label="Ergebnis"
 						/>
 					</Tooltip>
 				)}

@@ -10,8 +10,8 @@ import {
 	Title,
 	Tooltip,
 } from "@mantine/core";
-import classes from "../main.module.css";
 import { useForm } from "@mantine/form";
+import classes from "../main.module.css";
 
 const DHCP = () => {
 	const [result, setResult] = useState<string>();
