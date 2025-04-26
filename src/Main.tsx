@@ -10,6 +10,7 @@ import DateTime from "./pages/DateTime";
 import Convert from "./pages/Convert";
 import DHCP from "./pages/DHCP";
 import ConvertFile from "./pages/ConvertFile";
+import DID from "./pages/DID";
 
 const Main = () => {
 	return (
@@ -24,6 +25,7 @@ const Main = () => {
 				<Convert />
 				<ConvertFile />
 				<DHCP />
+				<DID />
 			</div>
 		</Center>
 	);

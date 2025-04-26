@@ -33,7 +33,9 @@ const ConvertFile = () => {
 			case "csv2json":
 				try {
 					setTo(JSON.stringify(csv2json(from)));
-				} catch (error) {}
+				} catch (error) {
+					setTo("");
+				}
 				break;
 			case "json2csv":
 				try {
@@ -42,7 +44,9 @@ const ConvertFile = () => {
 							expandArrayObjects: true,
 						}),
 					);
-				} catch (error) {}
+				} catch (error) {
+					setTo("");
+				}
 				break;
 		}
 	}, [from, mode]);

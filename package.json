@@ -30,6 +30,7 @@
 		"@hyper-fetch/core": "^6.0.1",
 		"@hyper-fetch/react": "^6.0.1",
 		"@mantine/core": "^7.17.0",
+		"@mantine/form": "^7.17.5",
 		"@mantine/hooks": "^7.7.1",
 		"@tabler/icons-react": "^3.31.0",
 		"crypto-js": "^4.2.0",
