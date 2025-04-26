@@ -1,11 +1,11 @@
 import React from "react";
-import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
+import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
 
 const UserAgent = () => {
 	return (
-		<Card mb="xs">
-			<h4>User-Agent</h4>
+		<Card mb="xs" component={Stack}>
+			<Title order={3}>User-Agent</Title>
 			<CopyButton value={window.navigator.userAgent}>
 				{({ copied, copy }) => (
 					<Tooltip
