@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Code, CopyButton, Tooltip } from "@mantine/core";
+import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
 import { client } from "../func/client";
 import { useFetch } from "@hyper-fetch/react";
@@ -24,8 +24,8 @@ const IP = () => {
 	});
 
 	return (
-		<Card mb="xs">
-			<h4>IPv4 Adresse</h4>
+		<Card mb="xs" component={Stack}>
+			<Title order={4}>IPv4 Adresse</Title>
 			<CopyButton value={ip4 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
@@ -35,7 +35,7 @@ const IP = () => {
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>IPv6 Adresse</h4>
+			<Title order={4}>IPv6 Adresse</Title>
 			<CopyButton value={ip6 || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "IP kopiert" : "IP kopieren"}>
