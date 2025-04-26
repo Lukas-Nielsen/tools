@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { IconRefresh } from "@tabler/icons-react";
-import { Card, Code, CopyButton, Group, Tooltip } from "@mantine/core";
+import {
+	Card,
+	Code,
+	CopyButton,
+	Group,
+	Stack,
+	Title,
+	Tooltip,
+} from "@mantine/core";
 import classes from "../main.module.css";
 
 const Password = () => {
@@ -23,16 +31,16 @@ const Password = () => {
 	}, []);
 
 	return (
-		<Card mb="xs">
+		<Card mb="xs" component={Stack}>
 			<Group>
-				<h3>Passwörter</h3>
+				<Title order={3}>Passwörter</Title>
 				<IconRefresh
-					size={30}
+					size={24}
 					onClick={() => setPassword(generatePassword())}
 					style={{ cursor: "pointer" }}
 				/>
 			</Group>
-			<h4>8 Zeichen</h4>
+			<Title order={4}>8 Zeichen</Title>
 			<CopyButton value={password.a}>
 				{({ copied, copy }) => (
 					<Tooltip
@@ -46,7 +54,7 @@ const Password = () => {
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>10 Zeichen</h4>
+			<Title order={4}>10 Zeichen</Title>
 			<CopyButton value={password.b}>
 				{({ copied, copy }) => (
 					<Tooltip
@@ -60,7 +68,7 @@ const Password = () => {
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>18 Zeichen</h4>
+			<Title order={4}>18 Zeichen</Title>
 			<CopyButton value={password.c}>
 				{({ copied, copy }) => (
 					<Tooltip
@@ -74,7 +82,7 @@ const Password = () => {
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>30 Zeichen</h4>
+			<Title order={4}>30 Zeichen</Title>
 			<CopyButton value={password.d}>
 				{({ copied, copy }) => (
 					<Tooltip
