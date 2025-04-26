@@ -1,73 +1,106 @@
 import React, { useEffect, useState } from "react";
-import { Card, CopyButton, Input, Textarea, Tooltip } from "@mantine/core";
+import {
+	Card,
+	CopyButton,
+	Input,
+	SegmentedControl,
+	Stack,
+	TextInput,
+	Textarea,
+	Title,
+	Tooltip,
+} from "@mantine/core";
 import classes from "../main.module.css";
+import { useForm } from "@mantine/form";
 
 const DHCP = () => {
-	const [net, setNet] = useState<string>();
-	const [start, setStart] = useState<string>();
-	const [description, setDescription] = useState<string>();
-	const [input, setInput] = useState<string>();
 	const [result, setResult] = useState<string>();
 
-	useEffect(() => {
-		if (input && net && start) {
-			const macs = [
-				...input.matchAll(/(?:[0-9A-Fa-f]{12}|[0-9A-Fa-f:-]{17})/g),
-			];
+	const handleChange = () => {
+		const macs = [
+			...form
+				.getValues()
+				.mac.matchAll(/(?:[0-9A-Fa-f]{12}|[0-9A-Fa-f:-]{17})/g),
+		];
 
-			if (!/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/g.test(net))
-				return;
+		if (
+			!/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/g.test(
+				form.getValues().net,
+			)
+		)
+			return;
 
-			const ip = ipToNumber(start);
+		const ip = ipToNumber(form.getValues().start);
 
-			let callback = "";
-			macs.map((item, index) => {
-				const mac = item[0].replaceAll(/[^0-9A-Fa-f]/g, "");
+		let callback = "";
+		macs.map((item, index) => {
+			const mac = item[0].replaceAll(/[^0-9A-Fa-f]/g, "");
+			if (form.getValues().mode === "ps") {
+				callback += `Add-DhcpServerv4Reservation -ScopeId ${form.getValues().net} -IPAddress ${numberToIP(ip + index)} -ClientId "${mac}" -Description "${form.getValues().desc || ""}"\n`;
+			} else {
+				callback += `netsh dhcp server scope ${form.getValues().net} add reservedip ${numberToIP(ip + index)} ${mac} "${form.getValues().desc || ""}"\n`;
+			}
+		});
+		setResult(callback);
+	};
 
-				callback += `netsh dhcp server scope ${net} add reservedip ${numberToIP(
-					ip + index,
-				)} ${mac} "${description || ""}"\n`;
-			});
-			setResult(callback);
-		}
-		setResult(undefined);
-	}, [net, start, description, input]);
+	const form = useForm<{
+		net: string;
+		start: string;
+		desc: string;
+		mac: string;
+		mode: "batch" | "ps";
+	}>({
+		initialValues: { desc: "", mac: "", net: "", start: "", mode: "ps" },
+		onValuesChange: handleChange,
+	});
 
 	return (
-		<Card mb="xs">
-			<h3>DHCP-Reservierungen</h3>
-			<h4>Netz (192.168.178.0)</h4>
-			<Input
-				value={net}
-				onChange={(e) => setNet(e.target.value)}
+		<Card mb="xs" component={Stack}>
+			<Title order={3}>DHCP-Reservierungen</Title>
+			<SegmentedControl
+				key={form.key("mode")}
+				data={[
+					{ label: "PowerShell", value: "ps" },
+					{ label: "Batch", value: "batch" },
+				]}
+				{...form.getInputProps("mode")}
+			/>
+			<TextInput
+				key={form.key("net")}
+				{...form.getInputProps("net")}
 				placeholder="192.168.178.0"
+				label="Netz (192.168.178.0)"
 			/>
-			<h4>Start IP</h4>
-			<Input
-				value={start}
-				onChange={(e) => setStart(e.target.value)}
+			<TextInput
+				key={form.key("start")}
+				{...form.getInputProps("start")}
 				placeholder="192.168.178.200"
+				label="Start IP"
 			/>
-			<h4>Beschreibung</h4>
-			<Input
-				value={description}
-				onChange={(e) => setDescription(e.target.value)}
+			<TextInput
+				key={form.key("desc")}
+				{...form.getInputProps("desc")}
 				placeholder="IP-Telefon"
+				label="Beschreibung"
 			/>
-			<h4>MAC-Adressen</h4>
 			<Textarea
-				value={input}
-				onChange={(e) => setInput(e.target.value)}
+				key={form.key("mac")}
+				{...form.getInputProps("mac")}
+				placeholder={`000000000000\n00-00-00-00-00-00\n00:00:00:00:00:00`}
+				label="MAC-Adressen"
+				rows={3}
 			/>
-			<h4>Ergebnis</h4>
 			<CopyButton value={result || ""}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
 						<Textarea
+							label="Ergebnis"
 							onClick={copy}
 							readOnly
 							value={result}
 							className={classes.copy}
+							labelProps={{ fw: "bold", fz: "1.5rem" }}
 						/>
 					</Tooltip>
 				)}

@@ -24,31 +24,29 @@ const DID = () => {
 	};
 
 	return (
-		<Card mb="xs">
-			<Stack>
-				<Title order={3} mb="0">
-					DID Generator
-				</Title>
-				<TextInput
-					key={form.key("base")}
-					{...form.getInputProps("base")}
-					placeholder="+49466198022"
-					label="Baisnummer"
-				/>
-				<TextInput
-					key={form.key("start")}
-					{...form.getInputProps("start")}
-					placeholder="10"
-					label="Block Start"
-				/>
-				<TextInput
-					key={form.key("end")}
-					{...form.getInputProps("end")}
-					placeholder="10"
-					label="Block Ende"
-				/>
-				<Button onClick={handleDownload}>Download</Button>
-			</Stack>
+		<Card mb="xs" component={Stack}>
+			<Title order={3} mb="0">
+				DID Generator
+			</Title>
+			<TextInput
+				key={form.key("base")}
+				{...form.getInputProps("base")}
+				placeholder="+49466198022"
+				label="Baisnummer"
+			/>
+			<TextInput
+				key={form.key("start")}
+				{...form.getInputProps("start")}
+				placeholder="10"
+				label="Block Start"
+			/>
+			<TextInput
+				key={form.key("end")}
+				{...form.getInputProps("end")}
+				placeholder="10"
+				label="Block Ende"
+			/>
+			<Button onClick={handleDownload}>Download</Button>
 		</Card>
 	);
 };
