@@ -3,11 +3,25 @@ import sha256 from "crypto-js/sha256";
 import sha1 from "crypto-js/sha1";
 import md5 from "crypto-js/md5";
 import hex from "crypto-js/enc-hex";
-import { Card, Code, CopyButton, Input, Tooltip } from "@mantine/core";
+import {
+	Card,
+	Code,
+	CopyButton,
+	Input,
+	Stack,
+	TextInput,
+	Title,
+	Tooltip,
+} from "@mantine/core";
 import classes from "../main.module.css";
 
 const Hash = () => {
-	const [hash, setHash] = useState({
+	const [hash, setHash] = useState<string>("");
+	const [hashList, setHashList] = useState<{
+		md5: string;
+		sha1: string;
+		sha256: string;
+	}>({
 		md5: "",
 		sha1: "",
 		sha256: "",
@@ -15,7 +29,8 @@ const Hash = () => {
 
 	const newHash = (e: ChangeEvent<HTMLInputElement>) => {
 		const text = e.target.value;
-		setHash({
+		setHash(text);
+		setHashList({
 			md5: hex.stringify(md5(text)),
 			sha1: hex.stringify(sha1(text)),
 			sha256: hex.stringify(sha256(text)),
@@ -23,35 +38,39 @@ const Hash = () => {
 	};
 
 	return (
-		<Card mb="xs">
-			<h3>Hashes</h3>
-			<Input placeholder="was möchtest du hashen?" onChange={newHash} />
-			<h4>MD5</h4>
-			<CopyButton value={hash.md5}>
+		<Card mb="xs" component={Stack}>
+			<Title order={3}>Hashes</Title>
+			<TextInput
+				placeholder="was möchtest du hashen?"
+				value={hash}
+				onChange={newHash}
+			/>
+			<Title order={4}>MD5</Title>
+			<CopyButton value={hashList.md5}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
-							{hash.md5}&nbsp;
+							{hashList.md5}&nbsp;
 						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>SHA1</h4>
-			<CopyButton value={hash.sha1}>
+			<Title order={4}>SHA1</Title>
+			<CopyButton value={hashList.sha1}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
-							{hash.sha1}&nbsp;
+							{hashList.sha1}&nbsp;
 						</Code>
 					</Tooltip>
 				)}
 			</CopyButton>
-			<h4>SHA256</h4>
-			<CopyButton value={hash.sha256}>
+			<Title order={4}>SHA256</Title>
+			<CopyButton value={hashList.sha256}>
 				{({ copied, copy }) => (
 					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
-							{hash.sha256}&nbsp;
+							{hashList.sha256}&nbsp;
 						</Code>
 					</Tooltip>
 				)}
