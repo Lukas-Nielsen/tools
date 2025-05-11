@@ -21,6 +21,6 @@ export default defineConfig({
 		},
 	},
 	base: "/",
-	server: { open: true, port: 3000 },
+	server: { open: true },
 	build: { emptyOutDir: true, outDir: "./build" },
 });

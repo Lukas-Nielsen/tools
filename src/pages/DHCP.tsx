@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
 	Card,
 	CopyButton,
+	Fieldset,
 	Input,
 	SegmentedControl,
 	Stack,
@@ -56,54 +57,70 @@ const DHCP = () => {
 	});
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3}>DHCP-Reservierungen</Title>
-			<SegmentedControl
-				key={form.key("mode")}
-				data={[
-					{ label: "PowerShell", value: "ps" },
-					{ label: "Batch", value: "batch" },
-				]}
-				{...form.getInputProps("mode")}
-			/>
-			<TextInput
-				key={form.key("net")}
-				{...form.getInputProps("net")}
-				placeholder="192.168.178.0"
-				label="Netz (192.168.178.0)"
-			/>
-			<TextInput
-				key={form.key("start")}
-				{...form.getInputProps("start")}
-				placeholder="192.168.178.200"
-				label="Start IP"
-			/>
-			<TextInput
-				key={form.key("desc")}
-				{...form.getInputProps("desc")}
-				placeholder="IP-Telefon"
-				label="Beschreibung"
-			/>
-			<Textarea
-				key={form.key("mac")}
-				{...form.getInputProps("mac")}
-				placeholder={`000000000000\n00-00-00-00-00-00\n00:00:00:00:00:00`}
-				label="MAC-Adressen"
-				rows={3}
-			/>
-			<CopyButton value={result || ""}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
-						<Textarea
-							label="Ergebnis"
-							onClick={copy}
-							readOnly
-							value={result}
-							className={classes.copy}
-						/>
-					</Tooltip>
-				)}
-			</CopyButton>
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3}>DHCP-Reservierungen</Title>
+				<Fieldset
+					legend="Konsole"
+					bd={0}
+					bg="inherit"
+					p={0}
+					m={0}
+					w="100%"
+				>
+					<SegmentedControl
+						key={form.key("mode")}
+						data={[
+							{ label: "PowerShell", value: "ps" },
+							{ label: "Batch", value: "batch" },
+						]}
+						{...form.getInputProps("mode")}
+						fullWidth
+						aria-label="Konsole"
+					/>
+				</Fieldset>
+				<TextInput
+					key={form.key("net")}
+					{...form.getInputProps("net")}
+					placeholder="192.168.178.0"
+					label="Netz (192.168.178.0)"
+				/>
+				<TextInput
+					key={form.key("start")}
+					{...form.getInputProps("start")}
+					placeholder="192.168.178.200"
+					label="Start IP"
+				/>
+				<TextInput
+					key={form.key("desc")}
+					{...form.getInputProps("desc")}
+					placeholder="IP-Telefon"
+					label="Beschreibung"
+				/>
+				<Textarea
+					key={form.key("mac")}
+					{...form.getInputProps("mac")}
+					placeholder={`000000000000\n00-00-00-00-00-00\n00:00:00:00:00:00`}
+					label="MAC-Adressen"
+					rows={3}
+				/>
+				<CopyButton value={result || ""}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Text kopiert" : "Text kopieren"}
+						>
+							<Textarea
+								label="Ergebnis"
+								onClick={copy}
+								readOnly
+								value={result}
+								className={classes.copy}
+								aria-label="DHCP-Ergebnis"
+							/>
+						</Tooltip>
+					)}
+				</CopyButton>
+			</Fieldset>
 		</Card>
 	);
 };

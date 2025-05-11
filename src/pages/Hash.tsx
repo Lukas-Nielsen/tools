@@ -7,6 +7,7 @@ import {
 	Card,
 	Code,
 	CopyButton,
+	Fieldset,
 	Input,
 	Stack,
 	TextInput,
@@ -38,43 +39,51 @@ const Hash = () => {
 	};
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3}>Hashes</Title>
-			<TextInput
-				placeholder="was möchtest du hashen?"
-				value={hash}
-				onChange={newHash}
-			/>
-			<Title order={4}>MD5</Title>
-			<CopyButton value={hashList.md5}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy} className={classes.copy}>
-							{hashList.md5}&nbsp;
-						</Code>
-					</Tooltip>
-				)}
-			</CopyButton>
-			<Title order={4}>SHA1</Title>
-			<CopyButton value={hashList.sha1}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy} className={classes.copy}>
-							{hashList.sha1}&nbsp;
-						</Code>
-					</Tooltip>
-				)}
-			</CopyButton>
-			<Title order={4}>SHA256</Title>
-			<CopyButton value={hashList.sha256}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Hash kopiert" : "Hash kopieren"}>
-						<Code onClick={copy} className={classes.copy}>
-							{hashList.sha256}&nbsp;
-						</Code>
-					</Tooltip>
-				)}
-			</CopyButton>
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3}>Hashes</Title>
+				<TextInput
+					placeholder="was möchtest du hashen?"
+					value={hash}
+					onChange={newHash}
+				/>
+				<Title order={4}>MD5</Title>
+				<CopyButton value={hashList.md5}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Hash kopiert" : "Hash kopieren"}
+						>
+							<Code onClick={copy} className={classes.copy}>
+								{hashList.md5}&nbsp;
+							</Code>
+						</Tooltip>
+					)}
+				</CopyButton>
+				<Title order={4}>SHA1</Title>
+				<CopyButton value={hashList.sha1}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Hash kopiert" : "Hash kopieren"}
+						>
+							<Code onClick={copy} className={classes.copy}>
+								{hashList.sha1}&nbsp;
+							</Code>
+						</Tooltip>
+					)}
+				</CopyButton>
+				<Title order={4}>SHA256</Title>
+				<CopyButton value={hashList.sha256}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Hash kopiert" : "Hash kopieren"}
+						>
+							<Code onClick={copy} className={classes.copy}>
+								{hashList.sha256}&nbsp;
+							</Code>
+						</Tooltip>
+					)}
+				</CopyButton>
+			</Fieldset>
 		</Card>
 	);
 };

@@ -15,7 +15,7 @@ import DID from "./pages/DID";
 const Main = () => {
 	return (
 		<Center>
-			<div className={classes.main}>
+			<main className={classes.main}>
 				<IP />
 				<UserAgent />
 				<Password />
@@ -26,7 +26,7 @@ const Main = () => {
 				<ConvertFile />
 				<DHCP />
 				<DID />
-			</div>
+			</main>
 		</Center>
 	);
 };

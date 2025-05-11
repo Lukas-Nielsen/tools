@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Stack, TextInput, Title } from "@mantine/core";
+import { Button, Card, Fieldset, Stack, TextInput, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
 const DID = () => {
@@ -24,29 +24,31 @@ const DID = () => {
 	};
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3} mb="0">
-				DID Generator
-			</Title>
-			<TextInput
-				key={form.key("base")}
-				{...form.getInputProps("base")}
-				placeholder="+49466198022"
-				label="Baisnummer"
-			/>
-			<TextInput
-				key={form.key("start")}
-				{...form.getInputProps("start")}
-				placeholder="10"
-				label="Block Start"
-			/>
-			<TextInput
-				key={form.key("end")}
-				{...form.getInputProps("end")}
-				placeholder="10"
-				label="Block Ende"
-			/>
-			<Button onClick={handleDownload}>Download</Button>
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3} mb="0">
+					DID Generator
+				</Title>
+				<TextInput
+					key={form.key("base")}
+					{...form.getInputProps("base")}
+					placeholder="+49466198022"
+					label="Baisnummer"
+				/>
+				<TextInput
+					key={form.key("start")}
+					{...form.getInputProps("start")}
+					placeholder="10"
+					label="Block Start"
+				/>
+				<TextInput
+					key={form.key("end")}
+					{...form.getInputProps("end")}
+					placeholder="10"
+					label="Block Ende"
+				/>
+				<Button onClick={handleDownload}>Download</Button>
+			</Fieldset>
 		</Card>
 	);
 };

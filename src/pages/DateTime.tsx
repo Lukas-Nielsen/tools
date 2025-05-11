@@ -1,4 +1,4 @@
-import { Card, NumberInput, Stack, Title } from "@mantine/core";
+import { Card, Fieldset, NumberInput, Stack, Title } from "@mantine/core";
 import { DateInput, DateValue } from "@mantine/dates";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -19,28 +19,30 @@ const DateTime = () => {
 	};
 
 	const handleDate = (e: DateValue) => {
-		if (e) {
+		if (e && e instanceof Date) {
 			setDate(e);
 			setUnix((e.getTime() / 1000).toFixed(0));
 		}
 	};
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3}>Zeitrechner</Title>
-			<NumberInput
-				value={unix}
-				onChange={handleUnix}
-				placeholder="Unixtimestamp"
-				label="Unixtimestamp"
-				hideControls
-			/>
-			<DateInput
-				valueFormat="DD.MM.YYYY HH:mm:ss"
-				value={date}
-				onChange={handleDate}
-				label="Datum & Uhrzeit"
-			/>
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3}>Zeitrechner</Title>
+				<NumberInput
+					value={unix}
+					onChange={handleUnix}
+					placeholder="Unixtimestamp"
+					label="Unixtimestamp"
+					hideControls
+				/>
+				<DateInput
+					valueFormat="DD.MM.YYYY HH:mm:ss"
+					value={date}
+					onChange={handleDate}
+					label="Datum & Uhrzeit"
+				/>
+			</Fieldset>
 		</Card>
 	);
 };

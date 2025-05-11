@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
+	Fieldset,
 	Select,
 	Stack,
 	Textarea,
@@ -56,36 +57,43 @@ const ConvertFile = () => {
 	});
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3} mb="0">
-				CSV/JSON Konverter
-			</Title>
-			<Select
-				key={form.key("mode")}
-				{...form.getInputProps("mode")}
-				data={modes}
-				checkIconPosition="right"
-			/>
-			<Textarea
-				key={form.key("from")}
-				{...form.getInputProps("from")}
-				placeholder="Quelle"
-				label="Eingabe"
-			/>
-			<CopyButton value={result}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
-						<Textarea
-							title="klicken zum Kopieren"
-							onClick={copy}
-							readOnly
-							value={result}
-							className={classes.copy}
-							label="Ergebnis"
-						/>
-					</Tooltip>
-				)}
-			</CopyButton>
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3} mb="0">
+					CSV/JSON Konverter
+				</Title>
+				<Select
+					key={form.key("mode")}
+					{...form.getInputProps("mode")}
+					data={modes}
+					checkIconPosition="right"
+					label="Modus"
+				/>
+				<Textarea
+					key={form.key("from")}
+					{...form.getInputProps("from")}
+					placeholder="Quelle"
+					label="Eingabe"
+					aria-label="Datei-Eingabe"
+				/>
+				<CopyButton value={result}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Text kopiert" : "Text kopieren"}
+						>
+							<Textarea
+								title="klicken zum Kopieren"
+								onClick={copy}
+								readOnly
+								value={result}
+								className={classes.copy}
+								label="Ergebnis"
+								aria-label="Datei-Ergebnis"
+							/>
+						</Tooltip>
+					)}
+				</CopyButton>
+			</Fieldset>
 		</Card>
 	);
 };

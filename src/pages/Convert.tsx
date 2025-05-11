@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
+	Fieldset,
 	Group,
 	Select,
 	Stack,
@@ -100,43 +101,51 @@ const Convert = () => {
 	};
 
 	return (
-		<Card mb="xs" component={Stack}>
-			<Title order={3}>konvertieren zwischen Formaten</Title>
-			<Group wrap="nowrap">
-				<Select
-					key={form.key("fromMode")}
-					{...form.getInputProps("fromMode")}
-					data={modes}
-					checkIconPosition="right"
+		<Card mb="xs">
+			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
+				<Title order={3}>konvertieren zwischen Formaten</Title>
+				<Group wrap="nowrap">
+					<Select
+						key={form.key("fromMode")}
+						{...form.getInputProps("fromMode")}
+						data={modes}
+						checkIconPosition="right"
+						label="von"
+					/>
+					<IconArrowsExchange onClick={switchMode} />
+					<Select
+						key={form.key("toMode")}
+						{...form.getInputProps("toMode")}
+						data={modes}
+						checkIconPosition="right"
+						label="zu"
+					/>
+				</Group>
+				<Textarea
+					key={form.key("from")}
+					{...form.getInputProps("from")}
+					placeholder="Zeichenkette"
+					label="Eingabe"
+					aria-label="Konvert-Eingabe"
 				/>
-				<IconArrowsExchange onClick={switchMode} />
-				<Select
-					key={form.key("toMode")}
-					{...form.getInputProps("toMode")}
-					data={modes}
-					checkIconPosition="right"
-				/>
-			</Group>
-			<Textarea
-				key={form.key("from")}
-				{...form.getInputProps("from")}
-				placeholder="Zeichenkette"
-				label="Eingabe"
-			/>
-			<CopyButton value={result}>
-				{({ copied, copy }) => (
-					<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
-						<Textarea
-							title="klicken zum Kopieren"
-							onClick={copy}
-							readOnly
-							value={result}
-							className={classes.copy}
-							label="Ergebnis"
-						/>
-					</Tooltip>
-				)}
-			</CopyButton>
+				<CopyButton value={result}>
+					{({ copied, copy }) => (
+						<Tooltip
+							label={copied ? "Text kopiert" : "Text kopieren"}
+						>
+							<Textarea
+								title="klicken zum Kopieren"
+								onClick={copy}
+								readOnly
+								value={result}
+								className={classes.copy}
+								label="Ergebnis"
+								aria-label="Konvert-Ergebnis"
+							/>
+						</Tooltip>
+					)}
+				</CopyButton>
+			</Fieldset>
 		</Card>
 	);
 };
