@@ -27,11 +27,11 @@
 		"useTabs": true
 	},
 	"dependencies": {
-		"@hyper-fetch/core": "^6.0.1",
-		"@hyper-fetch/react": "^6.0.1",
-		"@mantine/core": "^8.0.0",
-		"@mantine/dates": "^8.0.0",
-		"@mantine/form": "^8.0.0",
+		"@hyper-fetch/core": "^7.2.6",
+		"@hyper-fetch/react": "^7.2.6",
+		"@mantine/core": "^8.2.4",
+		"@mantine/dates": "^8.2.4",
+		"@mantine/form": "^8.2.4",
 		"@mantine/hooks": "^8.0.0",
 		"@tabler/icons-react": "^3.34.0",
 		"crypto-js": "^4.2.0",
