@@ -1,25 +1,25 @@
 import React from "react";
 import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
-import { client } from "../func/client";
+import { clientV4, clientV6 } from "../func/client";
 import { useFetch } from "@hyper-fetch/react";
-import { DateInterval } from "@hyper-fetch/core";
+import { Time } from "@hyper-fetch/core";
 
-const getIpV4 = client.createRequest<string>()({
-	endpoint: "https://ip4.lukasnielsen.de",
+const getIpV4 = clientV4.createRequest<{ response: string }>()({
+	endpoint: "",
 });
 
-const getIpV6 = client.createRequest<string>()({
-	endpoint: "https://ip6.lukasnielsen.de",
+const getIpV6 = clientV6.createRequest<{ response: string }>()({
+	endpoint: "",
 });
 
 const IP = () => {
 	const { data: ip4 } = useFetch(getIpV4, {
-		refreshTime: DateInterval.minute * 15,
+		refreshTime: Time.MIN * 15,
 		refresh: true,
 	});
 	const { data: ip6 } = useFetch(getIpV6, {
-		refreshTime: DateInterval.minute * 15,
+		refreshTime: Time.MIN * 15,
 		refresh: true,
 	});
 

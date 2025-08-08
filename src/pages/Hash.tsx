@@ -8,7 +8,6 @@ import {
 	Code,
 	CopyButton,
 	Fieldset,
-	Input,
 	Stack,
 	TextInput,
 	Title,
