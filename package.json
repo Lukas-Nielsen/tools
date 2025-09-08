@@ -27,8 +27,8 @@
 		"useTabs": true
 	},
 	"dependencies": {
-		"@hyper-fetch/core": "^7.2.6",
-		"@hyper-fetch/react": "^7.2.6",
+		"@hyper-fetch/core": "^7.5.2",
+		"@hyper-fetch/react": "^7.5.2",
 		"@mantine/core": "^8.2.4",
 		"@mantine/dates": "^8.2.4",
 		"@mantine/form": "^8.2.4",
