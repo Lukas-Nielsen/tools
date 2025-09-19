@@ -29,9 +29,9 @@
 	"dependencies": {
 		"@hyper-fetch/core": "^7.5.2",
 		"@hyper-fetch/react": "^7.5.2",
-		"@mantine/core": "^8.2.4",
-		"@mantine/dates": "^8.2.4",
-		"@mantine/form": "^8.2.4",
+		"@mantine/core": "^8.3.1",
+		"@mantine/dates": "^8.3.1",
+		"@mantine/form": "^8.3.1",
 		"@mantine/hooks": "^8.0.0",
 		"@tabler/icons-react": "^3.34.0",
 		"crypto-js": "^4.2.0",
