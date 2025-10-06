@@ -37,14 +37,14 @@
 		"crypto-js": "^4.2.0",
 		"dayjs": "^1.11.13",
 		"json-2-csv": "^5.5.9",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0"
 	},
 	"devDependencies": {
 		"@types/crypto-js": "^4.2.2",
 		"@types/node": "^24.5.2",
-		"@types/react": "^19.1.9",
-		"@types/react-dom": "^19.1.7",
+		"@types/react": "^19.2.0",
+		"@types/react-dom": "^19.2.0",
 		"@vitejs/plugin-react": "^5.0.0",
 		"oxlint": "^1.16.0",
 		"postcss": "^8.5.6",
