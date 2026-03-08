@@ -1,16 +1,16 @@
-import React from "react";
 import { Center } from "@mantine/core";
+import React from "react";
 import classes from "./main.module.css";
-import IP from "./pages/IP";
-import UserAgent from "./pages/UserAgent";
-import Password from "./pages/Password";
-import Hash from "./pages/Hash";
-import Mac from "./pages/MAC";
-import DateTime from "./pages/DateTime";
 import Convert from "./pages/Convert";
-import DHCP from "./pages/DHCP";
 import ConvertFile from "./pages/ConvertFile";
+import DateTime from "./pages/DateTime";
+import DHCP from "./pages/DHCP";
 import DID from "./pages/DID";
+import Hash from "./pages/Hash";
+import IP from "./pages/IP";
+import Mac from "./pages/MAC";
+import Password from "./pages/Password";
+import UserAgent from "./pages/UserAgent";
 
 const Main = () => {
 	return (

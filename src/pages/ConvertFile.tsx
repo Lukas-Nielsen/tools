@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
@@ -9,8 +8,9 @@ import {
 	Title,
 	Tooltip,
 } from "@mantine/core";
-import { json2csv, csv2json } from "json-2-csv";
 import { useForm } from "@mantine/form";
+import { csv2json, json2csv } from "json-2-csv";
+import React, { useState } from "react";
 import classes from "../main.module.css";
 
 type TMode = "csv2json" | "json2csv";

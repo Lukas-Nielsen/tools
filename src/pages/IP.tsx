@@ -1,9 +1,9 @@
-import React from "react";
-import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
-import classes from "../main.module.css";
-import { clientV4, clientV6 } from "../func/client";
-import { useFetch } from "@hyper-fetch/react";
 import { Time } from "@hyper-fetch/core";
+import { useFetch } from "@hyper-fetch/react";
+import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
+import React from "react";
+import { clientV4, clientV6 } from "../func/client";
+import classes from "../main.module.css";
 
 const getIpV4 = clientV4.createRequest<{ response: string }>()({
 	endpoint: "",

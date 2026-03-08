@@ -1,11 +1,11 @@
-import { createRoot } from "react-dom/client";
-import React from "react";
-import Main from "./Main";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.layer.css";
+import { DatesProvider } from "@mantine/dates";
 import "@mantine/dates/styles.layer.css";
 import "dayjs/locale/de";
-import { DatesProvider } from "@mantine/dates";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Main from "./Main";
 
 const element = document.querySelector("#root");
 if (element) {

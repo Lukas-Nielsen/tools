@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
 	Card,
 	Code,
@@ -11,6 +10,7 @@ import {
 	Tooltip,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import React, { useState } from "react";
 import classes from "../main.module.css";
 
 const Mac = () => {

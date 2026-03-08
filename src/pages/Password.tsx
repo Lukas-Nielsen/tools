@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { IconRefresh } from "@tabler/icons-react";
 import {
 	Card,
 	Code,
@@ -9,6 +7,8 @@ import {
 	Title,
 	Tooltip,
 } from "@mantine/core";
+import { IconRefresh } from "@tabler/icons-react";
+import React, { useEffect, useState } from "react";
 import classes from "../main.module.css";
 
 const Password = () => {

@@ -1,5 +1,3 @@
-import { IconArrowsExchange } from "@tabler/icons-react";
-import React, { useState } from "react";
 import {
 	Card,
 	CopyButton,
@@ -11,8 +9,10 @@ import {
 	Title,
 	Tooltip,
 } from "@mantine/core";
-import classes from "../main.module.css";
 import { useForm } from "@mantine/form";
+import { IconArrowsExchange } from "@tabler/icons-react";
+import React, { useState } from "react";
+import classes from "../main.module.css";
 
 const Convert = () => {
 	type TMode = "string" | "hex" | "b64";
