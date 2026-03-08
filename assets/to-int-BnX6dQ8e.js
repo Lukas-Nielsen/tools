@@ -1,0 +1,1 @@
+import{r as d}from"./index-BN28AzSv.js";function a({value:t,defaultValue:n,finalValue:e,onChange:o=()=>{}}){const[s,c]=d.useState(n!==void 0?n:e),u=(r,...l)=>{c(r),o?.(r,...l)};return t!==void 0?[t,o,!0]:[s,u,!1]}function f(t){return t?parseInt(t,10):0}export{f as t,a as u};
