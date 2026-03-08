@@ -46,14 +46,14 @@ const Convert = () => {
 					try {
 						return window.btoa(str);
 					} catch (error) {
-						console.log(error);
+						console.debug(error);
 						return str;
 					}
 				case "hex":
 					try {
 						return encodeToHex(str);
 					} catch (error) {
-						console.log(error);
+						console.debug(error);
 						return str;
 					}
 
@@ -68,14 +68,14 @@ const Convert = () => {
 					try {
 						return window.atob(str);
 					} catch (error) {
-						console.log(error);
+						console.debug(error);
 						return str;
 					}
 				case "hex":
 					try {
 						return decodeFromHex(str);
 					} catch (error) {
-						console.log(error);
+						console.debug(error);
 						return str;
 					}
 

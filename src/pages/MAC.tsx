@@ -27,12 +27,6 @@ const Mac = () => {
 					? r.toLowerCase()
 					: r.toUpperCase();
 
-			console.log(
-				r
-					.split(/(.{2})/)
-					.filter((O) => O)
-					.join(form.getValues().sep),
-			);
 			setResult(
 				r
 					.split(/(.{2})/)

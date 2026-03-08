@@ -34,7 +34,7 @@ const ConvertFile = () => {
 				try {
 					setResult(JSON.stringify(csv2json(form.getValues().from)));
 				} catch (error) {
-					console.log(error);
+					console.debug(error);
 					setResult("");
 				}
 				break;
@@ -45,8 +45,8 @@ const ConvertFile = () => {
 							expandArrayObjects: true,
 						}),
 					);
-				} catch (error) {
-					console.log(error);
+				} catch (e) {
+					console.debug(e);
 					setResult("");
 				}
 				break;
