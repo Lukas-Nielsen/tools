@@ -1,5 +1,5 @@
 import { Card, Fieldset, NumberInput, Stack, Title } from "@mantine/core";
-import { DateInput, DateValue } from "@mantine/dates";
+import { DateInput, DateTimePicker, DateValue } from "@mantine/dates";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import React, { useState } from "react";
@@ -7,22 +7,19 @@ import React, { useState } from "react";
 dayjs.extend(customParseFormat);
 
 const DateTime = () => {
-	const [unix, setUnix] = useState<string>(
-		(new Date().getTime() / 1000).toFixed(0),
-	);
+	const [unix, setUnix] = useState<number>(new Date().getTime() / 1000);
 	const [date, setDate] = useState<DateValue>(new Date());
 
-	const handleUnix = (e: string | number) => {
-		const temp = Number(e);
-		setUnix(temp.toFixed(0));
+	const handleUnix = (v: string | number) => {
+		const temp = Number(v);
+		setUnix(temp);
 		setDate(new Date(temp * 1000));
 	};
 
-	const handleDate = (e: DateValue) => {
-		if (e && e instanceof Date) {
-			setDate(e);
-			setUnix((e.getTime() / 1000).toFixed(0));
-		}
+	const handleDate = (v: string) => {
+		const date = new Date(v);
+		setDate(date);
+		setUnix(date.getTime() / 1000);
 	};
 
 	return (
@@ -35,8 +32,10 @@ const DateTime = () => {
 					placeholder="Unixtimestamp"
 					label="Unixtimestamp"
 					hideControls
+					allowDecimal={false}
+					allowLeadingZeros={false}
 				/>
-				<DateInput
+				<DateTimePicker
 					valueFormat="DD.MM.YYYY HH:mm:ss"
 					value={date}
 					onChange={handleDate}
