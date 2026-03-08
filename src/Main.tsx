@@ -1,6 +1,7 @@
 import { Center } from "@mantine/core";
 import React, { lazy } from "react";
 import classes from "./main.module.css";
+const Passphrase = lazy(() => import("./pages/Passphrase"));
 const IP = lazy(() => import("./pages/IP"));
 const UserAgent = lazy(() => import("./pages/UserAgent"));
 const Password = lazy(() => import("./pages/Password"));
@@ -19,6 +20,7 @@ const Main = () => {
 				<IP />
 				<UserAgent />
 				<Password />
+				<Passphrase />
 				<Hash />
 				<Mac />
 				<DateTime />
