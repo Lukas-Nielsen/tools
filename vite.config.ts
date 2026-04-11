@@ -1,28 +1,37 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite-plus";
-import oxlintPlugin from "vite-plugin-oxlint";
 
 export default defineConfig({
 	staged: {
 		"*": "vp check --fix",
 	},
-	lint: { options: { typeAware: true, typeCheck: true } },
-	fmt: {
-		proseWrap: "always",
-		singleQuote: false,
-		tabWidth: 4,
-		useTabs: true,
-		printWidth: 80,
-		sortPackageJson: false,
-		ignorePatterns: ["node_modules/**", "build/**"],
-	},
-	plugins: [react(), oxlintPlugin()],
-	resolve: {
-		alias: {
-			"@tabler/icons-react":
-				"@tabler/icons-react/dist/esm/icons/index.mjs",
+	lint: {
+		options: { typeAware: true, typeCheck: true },
+		plugins: ["eslint", "import", "jsx-a11y", "react", "typescript", "oxc"],
+		rules: {
+			"react/exhaustive-deps": "off",
+			"eslint/no-unused-vars": ["warn", { fix: { imports: "fix", variables: "suggestion" } }],
 		},
 	},
+	fmt: {
+		useTabs: true,
+		singleQuote: false,
+		tabWidth: 4,
+		sortImports: {
+			groups: [
+				"type-import",
+				["value-builtin", "value-external"],
+				"type-internal",
+				"value-internal",
+				["type-parent", "type-sibling", "type-index"],
+				["value-parent", "value-sibling", "value-index"],
+				"unknown",
+			],
+		},
+		sortPackageJson: true,
+		printWidth: 150,
+	},
+	plugins: [react()],
 	base: "/",
 	server: { open: true },
 	build: { emptyOutDir: true, outDir: "./build" },

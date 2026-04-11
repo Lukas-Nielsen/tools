@@ -5,6 +5,7 @@ import "@mantine/dates/styles.layer.css";
 import "dayjs/locale/de";
 import React from "react";
 import { createRoot } from "react-dom/client";
+
 import Main from "./Main";
 
 const element = document.querySelector("#root");

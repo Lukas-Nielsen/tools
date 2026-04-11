@@ -1,14 +1,7 @@
-import {
-	Card,
-	Code,
-	CopyButton,
-	Group,
-	Stack,
-	Title,
-	Tooltip,
-} from "@mantine/core";
+import { Card, Code, CopyButton, Group, Stack, Title, Tooltip } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
+
 import classes from "../main.module.css";
 
 const Password = () => {
@@ -34,20 +27,12 @@ const Password = () => {
 		<Card mb="xs" component={Stack}>
 			<Group>
 				<Title order={3}>Passwörter</Title>
-				<IconRefresh
-					size={24}
-					onClick={() => setPassword(generatePassword())}
-					style={{ cursor: "pointer" }}
-				/>
+				<IconRefresh size={24} onClick={() => setPassword(generatePassword())} style={{ cursor: "pointer" }} />
 			</Group>
 			<Title order={4}>8 Zeichen</Title>
 			<CopyButton value={password.a}>
 				{({ copied, copy }) => (
-					<Tooltip
-						label={
-							copied ? "Passwort kopiert" : "Passwort kopieren"
-						}
-					>
+					<Tooltip label={copied ? "Passwort kopiert" : "Passwort kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
 							{password.a}
 						</Code>
@@ -57,11 +42,7 @@ const Password = () => {
 			<Title order={4}>10 Zeichen</Title>
 			<CopyButton value={password.b}>
 				{({ copied, copy }) => (
-					<Tooltip
-						label={
-							copied ? "Passwort kopiert" : "Passwort kopieren"
-						}
-					>
+					<Tooltip label={copied ? "Passwort kopiert" : "Passwort kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
 							{password.b}
 						</Code>
@@ -71,11 +52,7 @@ const Password = () => {
 			<Title order={4}>18 Zeichen</Title>
 			<CopyButton value={password.c}>
 				{({ copied, copy }) => (
-					<Tooltip
-						label={
-							copied ? "Passwort kopiert" : "Passwort kopieren"
-						}
-					>
+					<Tooltip label={copied ? "Passwort kopiert" : "Passwort kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
 							{password.c}
 						</Code>
@@ -85,11 +62,7 @@ const Password = () => {
 			<Title order={4}>30 Zeichen</Title>
 			<CopyButton value={password.d}>
 				{({ copied, copy }) => (
-					<Tooltip
-						label={
-							copied ? "Passwort kopiert" : "Passwort kopieren"
-						}
-					>
+					<Tooltip label={copied ? "Passwort kopiert" : "Passwort kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
 							{password.d}
 						</Code>
@@ -111,10 +84,7 @@ const generatePassword = () => {
 	};
 };
 
-const getPassword = (
-	length = 20,
-	characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$+*",
-) => {
+const getPassword = (length = 20, characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$+*") => {
 	const password = [];
 	const maxMultiple = Math.floor(256 / characters.length) * characters.length;
 	while (password.length < length) {

@@ -9,18 +9,6 @@
 		"format": "vp fmt .",
 		"prepare": "vp config"
 	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
 	"dependencies": {
 		"@hyper-fetch/core": "^7.5.3",
 		"@hyper-fetch/react": "^7.5.3",
@@ -47,8 +35,19 @@
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3",
 		"vite": "catalog:",
-		"vite-plugin-oxlint": "^2.0.1",
 		"vite-plus": "catalog:"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"packageManager": "pnpm@10.33.0"
 }

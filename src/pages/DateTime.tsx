@@ -16,10 +16,12 @@ const DateTime = () => {
 		setDate(new Date(temp * 1000));
 	};
 
-	const handleDate = (v: string) => {
-		const date = new Date(v);
-		setDate(date);
-		setUnix(date.getTime() / 1000);
+	const handleDate = (v: string | null) => {
+		if (v) {
+			const date = new Date(v);
+			setDate(date);
+			setUnix(date.getTime() / 1000);
+		}
 	};
 
 	return (
@@ -35,12 +37,7 @@ const DateTime = () => {
 					allowDecimal={false}
 					allowLeadingZeros={false}
 				/>
-				<DateTimePicker
-					valueFormat="DD.MM.YYYY HH:mm:ss"
-					value={date}
-					onChange={handleDate}
-					label="Datum & Uhrzeit"
-				/>
+				<DateTimePicker valueFormat="DD.MM.YYYY HH:mm:ss" value={date} onChange={handleDate} label="Datum & Uhrzeit" />
 			</Fieldset>
 		</Card>
 	);

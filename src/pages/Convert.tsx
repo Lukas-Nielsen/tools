@@ -1,17 +1,8 @@
-import {
-	Card,
-	CopyButton,
-	Fieldset,
-	Group,
-	Select,
-	Stack,
-	Textarea,
-	Title,
-	Tooltip,
-} from "@mantine/core";
+import { Card, CopyButton, Fieldset, Group, Select, Stack, Textarea, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconArrowsExchange } from "@tabler/icons-react";
 import React, { useState } from "react";
+
 import classes from "../main.module.css";
 
 const Convert = () => {
@@ -109,21 +100,9 @@ const Convert = () => {
 			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
 				<Title order={3}>konvertieren zwischen Formaten</Title>
 				<Group wrap="nowrap">
-					<Select
-						key={form.key("fromMode")}
-						{...form.getInputProps("fromMode")}
-						data={modes}
-						checkIconPosition="right"
-						label="von"
-					/>
+					<Select key={form.key("fromMode")} {...form.getInputProps("fromMode")} data={modes} checkIconPosition="right" label="von" />
 					<IconArrowsExchange onClick={switchMode} />
-					<Select
-						key={form.key("toMode")}
-						{...form.getInputProps("toMode")}
-						data={modes}
-						checkIconPosition="right"
-						label="zu"
-					/>
+					<Select key={form.key("toMode")} {...form.getInputProps("toMode")} data={modes} checkIconPosition="right" label="zu" />
 				</Group>
 				<Textarea
 					key={form.key("from")}
@@ -134,9 +113,7 @@ const Convert = () => {
 				/>
 				<CopyButton value={result}>
 					{({ copied, copy }) => (
-						<Tooltip
-							label={copied ? "Text kopiert" : "Text kopieren"}
-						>
+						<Tooltip label={copied ? "Text kopiert" : "Text kopieren"}>
 							<Textarea
 								title="klicken zum Kopieren"
 								onClick={copy}

@@ -1,5 +1,6 @@
 import { Center } from "@mantine/core";
 import React, { lazy } from "react";
+
 import classes from "./main.module.css";
 const Passphrase = lazy(() => import("./pages/Passphrase"));
 const IP = lazy(() => import("./pages/IP"));

@@ -88,9 +88,6 @@ importers:
       vite:
         specifier: npm:@voidzero-dev/vite-plus-core@latest
         version: '@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3)'
-      vite-plugin-oxlint:
-        specifier: ^2.0.1
-        version: 2.0.1(@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3))(oxlint@1.58.0(oxlint-tsgolint@0.20.0))
       vite-plus:
         specifier: 'catalog:'
         version: 0.1.16(@types/node@25.3.5)(@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3))(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3)
@@ -807,10 +804,6 @@ packages:
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
-  cross-spawn@7.0.6:
-    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
-    engines: {node: '>= 8'}
-
   crypto-js@4.2.0:
     resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
 
@@ -891,9 +884,6 @@ packages:
   get-nonce@1.0.1:
     resolution: {integrity: sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==}
     engines: {node: '>=6'}
-
-  isexe@2.0.0:
-    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -1033,13 +1023,6 @@ packages:
       oxlint-tsgolint:
         optional: true
 
-  package-manager-detector@1.6.0:
-    resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
-
-  path-key@3.1.1:
-    resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
-    engines: {node: '>=8'}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1156,14 +1139,6 @@ packages:
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
-
-  shebang-command@2.0.0:
-    resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
-    engines: {node: '>=8'}
-
-  shebang-regex@3.0.0:
-    resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
-    engines: {node: '>=8'}
 
   sirv@3.0.2:
     resolution: {integrity: sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g==}
@@ -1292,20 +1267,9 @@ packages:
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
 
-  vite-plugin-oxlint@2.0.1:
-    resolution: {integrity: sha512-+WPw00LwN8BZ9uKro0a2lOE8+Da8YHM6p5p10E43mXw/zYCQNV2pEnDuxehCUhUJ/KyAf4cs01n6i4Ey4JfhfQ==}
-    peerDependencies:
-      oxlint: '>=0.9.0'
-      vite: '>=5.0.0'
-
   vite-plus@0.1.16:
     resolution: {integrity: sha512-sgYHc5zWLSDInaHb/abvEA7UOwh7sUWuyNt+Slphj55jPvzodT8Dqw115xyKwDARTuRFSpm1eo/t58qZ8/NylQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
-    hasBin: true
-
-  which@2.0.2:
-    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
-    engines: {node: '>= 8'}
     hasBin: true
 
   ws@8.20.0:
@@ -1867,12 +1831,6 @@ snapshots:
 
   create-require@1.1.1: {}
 
-  cross-spawn@7.0.6:
-    dependencies:
-      path-key: 3.1.1
-      shebang-command: 2.0.0
-      which: 2.0.2
-
   crypto-js@4.2.0: {}
 
   cssesc@3.0.0: {}
@@ -1915,8 +1873,6 @@ snapshots:
   gensync@1.0.0-beta.2: {}
 
   get-nonce@1.0.1: {}
-
-  isexe@2.0.0: {}
 
   js-tokens@4.0.0: {}
 
@@ -2052,10 +2008,6 @@ snapshots:
       '@oxlint/binding-win32-x64-msvc': 1.58.0
       oxlint-tsgolint: 0.20.0
 
-  package-manager-detector@1.6.0: {}
-
-  path-key@3.1.1: {}
-
   picocolors@1.1.1: {}
 
   picomatch@4.0.3: {}
@@ -2161,12 +2113,6 @@ snapshots:
 
   semver@6.3.1: {}
 
-  shebang-command@2.0.0:
-    dependencies:
-      shebang-regex: 3.0.0
-
-  shebang-regex@3.0.0: {}
-
   sirv@3.0.2:
     dependencies:
       '@polka/url': 1.0.0-next.29
@@ -2266,13 +2212,6 @@ snapshots:
 
   v8-compile-cache-lib@3.0.1: {}
 
-  vite-plugin-oxlint@2.0.1(@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3))(oxlint@1.58.0(oxlint-tsgolint@0.20.0)):
-    dependencies:
-      cross-spawn: 7.0.6
-      oxlint: 1.58.0(oxlint-tsgolint@0.20.0)
-      package-manager-detector: 1.6.0
-      vite: '@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3)'
-
   vite-plus@0.1.16(@types/node@25.3.5)(@voidzero-dev/vite-plus-core@0.1.16(@types/node@25.3.5)(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3))(sugarss@5.0.1(postcss@8.5.8))(typescript@5.9.3):
     dependencies:
       '@oxc-project/types': 0.123.0
@@ -2317,10 +2256,6 @@ snapshots:
       - utf-8-validate
       - vite
       - yaml
-
-  which@2.0.2:
-    dependencies:
-      isexe: 2.0.0
 
   ws@8.20.0: {}
 

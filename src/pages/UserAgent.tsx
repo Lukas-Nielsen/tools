@@ -1,5 +1,6 @@
 import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import React from "react";
+
 import classes from "../main.module.css";
 
 const UserAgent = () => {
@@ -8,13 +9,7 @@ const UserAgent = () => {
 			<Title order={3}>User-Agent</Title>
 			<CopyButton value={window.navigator.userAgent}>
 				{({ copied, copy }) => (
-					<Tooltip
-						label={
-							copied
-								? "User-Agent kopiert"
-								: "User-Agent kopieren"
-						}
-					>
+					<Tooltip label={copied ? "User-Agent kopiert" : "User-Agent kopieren"}>
 						<Code onClick={copy} className={classes.copy}>
 							{window.navigator.userAgent}
 						</Code>

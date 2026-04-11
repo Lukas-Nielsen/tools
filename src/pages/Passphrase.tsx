@@ -1,20 +1,8 @@
-import {
-	Card,
-	Code,
-	CopyButton,
-	Fieldset,
-	Group,
-	NumberInput,
-	Select,
-	Stack,
-	Switch,
-	TextInput,
-	Title,
-	Tooltip,
-} from "@mantine/core";
+import { Card, Code, CopyButton, Fieldset, Group, NumberInput, Select, Stack, Switch, TextInput, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconRefresh } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
+
 import classes from "../main.module.css";
 import wordsDE from "../words/de.json";
 import wordsEN from "../words/en.json";
@@ -52,14 +40,8 @@ export const Passphrase = () => {
 
 	const generate = () => {
 		const v = form.getValues();
-		const parts = Array.from({ length: v.wordCount }, () =>
-			getRandomWord(v.language),
-		);
-		const formatted = parts.map((w) =>
-			v.capitalize
-				? w[0].toUpperCase() + w.slice(1)
-				: w[0].toLowerCase() + w.slice(1),
-		);
+		const parts = Array.from({ length: v.wordCount }, () => getRandomWord(v.language));
+		const formatted = parts.map((w) => (v.capitalize ? w[0].toUpperCase() + w.slice(1) : w[0].toLowerCase() + w.slice(1)));
 		setPhrase(formatted.join(v.delimiter));
 	};
 
@@ -70,11 +52,7 @@ export const Passphrase = () => {
 			<Fieldset m={0} p={0} component={Stack} bd={0} bg="inherit">
 				<Group>
 					<Title order={3}>Passphrase</Title>
-					<IconRefresh
-						size={24}
-						onClick={generate}
-						style={{ cursor: "pointer" }}
-					/>
+					<IconRefresh size={24} onClick={generate} style={{ cursor: "pointer" }} />
 				</Group>
 
 				<Select
@@ -100,35 +78,15 @@ export const Passphrase = () => {
 					{...form.getInputProps("wordCount")}
 				/>
 
-				<TextInput
-					label="Trennzeichen"
-					key={form.key("delimiter")}
-					placeholder="-"
-					maxLength={1}
-					{...form.getInputProps("delimiter")}
-				/>
+				<TextInput label="Trennzeichen" key={form.key("delimiter")} placeholder="-" maxLength={1} {...form.getInputProps("delimiter")} />
 
-				<Switch
-					label="Wortänfänge großschreiben"
-					key={form.key("capitalize")}
-					{...form.getInputProps("capitalize", { type: "checkbox" })}
-				/>
+				<Switch label="Wortänfänge großschreiben" key={form.key("capitalize")} {...form.getInputProps("capitalize", { type: "checkbox" })} />
 
 				{phrase && (
 					<CopyButton value={phrase}>
 						{({ copied, copy }) => (
-							<Tooltip
-								label={
-									copied
-										? "Passphrase kopiert"
-										: "Passphrase kopieren"
-								}
-							>
-								<Code
-									mt="md"
-									onClick={copy}
-									className={classes.copy}
-								>
+							<Tooltip label={copied ? "Passphrase kopiert" : "Passphrase kopieren"}>
+								<Code mt="md" onClick={copy} className={classes.copy}>
 									{phrase}
 								</Code>
 							</Tooltip>
