@@ -4,9 +4,10 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "vite build",
-		"dev": "vite",
-		"format": "prettier . --write"
+		"build": "vp build",
+		"dev": "vp dev",
+		"format": "vp fmt .",
+		"prepare": "vp config"
 	},
 	"browserslist": {
 		"production": [
@@ -18,15 +19,6 @@
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"
-		]
-	},
-	"prettier": {
-		"proseWrap": "always",
-		"singleQuote": false,
-		"tabWidth": 4,
-		"useTabs": true,
-		"plugins": [
-			"prettier-plugin-organize-imports"
 		]
 	},
 	"dependencies": {
@@ -49,16 +41,14 @@
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.1.4",
-		"oxlint": "^1.51.0",
 		"postcss": "^8.5.8",
 		"postcss-preset-mantine": "^1.18.0",
 		"postcss-simple-vars": "^7.0.1",
-		"prettier": "^3.8.1",
-		"prettier-plugin-organize-imports": "^4.3.0",
-		"prettier-plugin-packagejson": "^3.0.2",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3",
-		"vite": "^7.3.1",
-		"vite-plugin-oxlint": "^2.0.1"
-	}
+		"vite": "catalog:",
+		"vite-plugin-oxlint": "^2.0.1",
+		"vite-plus": "catalog:"
+	},
+	"packageManager": "pnpm@10.33.0"
 }
