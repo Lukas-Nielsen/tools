@@ -1,0 +1,1 @@
+var e={main:`_main_1r09c_1`,copy:`_copy_1r09c_25`};export{e as t};

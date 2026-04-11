@@ -1,0 +1,1 @@
+import{l as e,p as t,r as n}from"./Box-Bjx8E4kI.js";import{n as r}from"./Fieldset-CvXf_TAP.js";var i=t(),a=n(t=>(0,i.jsx)(r,{component:`input`,...e(`TextInput`,null,t),__staticSelector:`TextInput`}));a.classes=r.classes,a.displayName=`@mantine/core/TextInput`;export{a as t};
