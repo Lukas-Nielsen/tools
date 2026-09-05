@@ -38,9 +38,6 @@ importers:
       '@otplib/plugin-base32-scure':
         specifier: ^13.5.0
         version: 13.5.0
-      '@otplib/plugin-crypto-node':
-        specifier: ^13.5.0
-        version: 13.5.0
       '@otplib/plugin-crypto-web':
         specifier: ^13.5.0
         version: 13.5.0
@@ -214,9 +211,6 @@ packages:
 
   '@otplib/plugin-base32-scure@13.5.0':
     resolution: {integrity: sha512-3JEIHindUMiIeNL0jXepSAkZ/7IkWq4sPdG9eXK0lrMXZG9RdKu5oz/4tuuTodtsFUPYhKlRMqv5xUvQIkMIaA==}
-
-  '@otplib/plugin-crypto-node@13.5.0':
-    resolution: {integrity: sha512-xSw6FllLco26dtd2tbTIDwKhYXeca/tnOvYdTdLpmZai+C35LfX0U3C5D793c9BPv7Mtt7YSkeD2yrhY1HBuhg==}
 
   '@otplib/plugin-crypto-web@13.5.0':
     resolution: {integrity: sha512-901GhB6/vLg+ARV8gXlP7sRdgUI2I/h4BOH3oGKtDykjLc7kpXvGrPlt7IF/1KCfKGtwam3ddu+OyloLFWVXvA==}
@@ -1658,10 +1652,6 @@ snapshots:
     dependencies:
       '@otplib/core': 13.5.0
       '@scure/base': 2.4.0
-
-  '@otplib/plugin-crypto-node@13.5.0':
-    dependencies:
-      '@otplib/core': 13.5.0
 
   '@otplib/plugin-crypto-web@13.5.0':
     dependencies:
