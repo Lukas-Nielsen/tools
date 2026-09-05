@@ -1,0 +1,1 @@
+import{n as e}from"./Fieldset-BepSwfZv.js";import{a as t,d as n,p as r}from"./index-IFwqo6MB.js";var i=r(),a=t(t=>{let r=n([`Input`,`InputWrapper`,`TextInput`],null,t);return(0,i.jsx)(e,{component:`input`,...r,__staticSelector:`TextInput`})});a.classes=e.classes,a.displayName=`@mantine/core/TextInput`;export{a as t};
