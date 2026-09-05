@@ -1,7 +1,6 @@
+import React, { useState } from "react";
 import { Card, Code, CopyButton, Fieldset, SegmentedControl, Stack, TextInput, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import React, { useState } from "react";
-
 import classes from "../main.module.css";
 
 const Mac = () => {
@@ -19,7 +18,7 @@ const Mac = () => {
 				r
 					.split(/(.{2})/)
 					.filter((O) => O)
-					.join(form.getValues().sep),
+					.join(form.getValues().sep)
 			);
 			return;
 		}

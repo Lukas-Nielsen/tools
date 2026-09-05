@@ -1,11 +1,10 @@
+import React, { useEffect, useState } from "react";
+import { IconRefresh } from "@tabler/icons-react";
 import { Card, Code, CopyButton, Fieldset, Group, NumberInput, Select, Stack, Switch, TextInput, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconRefresh } from "@tabler/icons-react";
-import React, { useEffect, useState } from "react";
-
-import classes from "../main.module.css";
 import wordsDE from "../words/de.json";
 import wordsEN from "../words/en.json";
+import classes from "../main.module.css";
 
 type TLanguage = "de" | "en";
 

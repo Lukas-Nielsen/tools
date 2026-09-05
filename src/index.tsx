@@ -1,11 +1,11 @@
-import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.layer.css";
-import { DatesProvider } from "@mantine/dates";
 import "@mantine/dates/styles.layer.css";
+
 import "dayjs/locale/de";
 import React from "react";
 import { createRoot } from "react-dom/client";
-
+import { MantineProvider } from "@mantine/core";
+import { DatesProvider } from "@mantine/dates";
 import Main from "./Main";
 
 const element = document.querySelector("#root");
@@ -16,6 +16,6 @@ if (element) {
 			<DatesProvider settings={{ locale: "de" }}>
 				<Main />
 			</DatesProvider>
-		</MantineProvider>,
+		</MantineProvider>
 	);
 }

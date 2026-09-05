@@ -1,7 +1,6 @@
+import React, { useState } from "react";
 import { Card, CopyButton, Fieldset, SegmentedControl, Stack, TextInput, Textarea, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import React, { useState } from "react";
-
 import classes from "../main.module.css";
 
 const DHCP = () => {
@@ -10,12 +9,14 @@ const DHCP = () => {
 	const handleChange = () => {
 		const macs = [...form.getValues().mac.matchAll(/(?:[0-9A-Fa-f]{12}|[0-9A-Fa-f:-]{17})/g)];
 
-		if (!/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/g.test(form.getValues().net)) return;
+		if (!/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/g.test(form.getValues().net)) {
+			return;
+		}
 
 		const ip = ipToNumber(form.getValues().start);
 
 		let callback = "";
-		macs.map((item, index) => {
+		macs.forEach((item, index) => {
 			const mac = item[0].replaceAll(/[^0-9A-Fa-f]/g, "");
 			if (form.getValues().mode === "ps") {
 				callback += `Add-DhcpServerv4Reservation -ScopeId ${form.getValues().net} -IPAddress ${numberToIP(ip + index)} -ClientId "${mac}" -Description "${form.getValues().desc || ""}"\n`;
@@ -75,7 +76,7 @@ const DHCP = () => {
 	);
 };
 
-const ipToNumber = (ip: string) => ip.split(".").reduce((sum, x, i) => sum + (parseInt(x) << (8 * (3 - i))), 0);
+const ipToNumber = (ip: string) => ip.split(".").reduce((sum, x, i) => sum + (parseInt(x, 10) << (8 * (3 - i))), 0);
 
 const numberToIP = (ip: number) => [24, 16, 8, 0].map((n) => (ip >> n) & 0xff).join(".");
 

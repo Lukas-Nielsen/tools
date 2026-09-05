@@ -1,8 +1,7 @@
+import React, { useState } from "react";
+import { csv2json, json2csv } from "json-2-csv";
 import { Card, CopyButton, Fieldset, Select, Stack, Textarea, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { csv2json, json2csv } from "json-2-csv";
-import React, { useState } from "react";
-
 import classes from "../main.module.css";
 
 type TMode = "csv2json" | "json2csv";
@@ -26,7 +25,6 @@ const ConvertFile = () => {
 				try {
 					setResult(JSON.stringify(csv2json(form.getValues().from)));
 				} catch (error) {
-					console.debug(error);
 					setResult("");
 				}
 				break;
@@ -35,10 +33,9 @@ const ConvertFile = () => {
 					setResult(
 						json2csv(JSON.parse(form.getValues().from), {
 							expandArrayObjects: true,
-						}),
+						})
 					);
 				} catch (e) {
-					console.debug(e);
 					setResult("");
 				}
 				break;

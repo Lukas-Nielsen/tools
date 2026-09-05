@@ -1,6 +1,5 @@
-import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import React from "react";
-
+import { Card, Code, CopyButton, Stack, Title, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
 
 const UserAgent = () => {

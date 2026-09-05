@@ -1,8 +1,7 @@
+import React, { useState } from "react";
+import { IconArrowsExchange } from "@tabler/icons-react";
 import { Card, CopyButton, Fieldset, Group, Select, Stack, Textarea, Title, Tooltip } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconArrowsExchange } from "@tabler/icons-react";
-import React, { useState } from "react";
-
 import classes from "../main.module.css";
 
 const Convert = () => {
@@ -37,14 +36,12 @@ const Convert = () => {
 					try {
 						return window.btoa(str);
 					} catch (error) {
-						console.debug(error);
 						return str;
 					}
 				case "hex":
 					try {
 						return encodeToHex(str);
 					} catch (error) {
-						console.debug(error);
 						return str;
 					}
 
@@ -59,14 +56,12 @@ const Convert = () => {
 					try {
 						return window.atob(str);
 					} catch (error) {
-						console.debug(error);
 						return str;
 					}
 				case "hex":
 					try {
 						return decodeFromHex(str);
 					} catch (error) {
-						console.debug(error);
 						return str;
 					}
 

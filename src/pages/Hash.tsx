@@ -1,10 +1,9 @@
-import { Card, Code, CopyButton, Fieldset, Stack, TextInput, Title, Tooltip } from "@mantine/core";
+import React, { ChangeEvent, useState } from "react";
 import hex from "crypto-js/enc-hex";
 import md5 from "crypto-js/md5";
 import sha1 from "crypto-js/sha1";
 import sha256 from "crypto-js/sha256";
-import React, { ChangeEvent, useState } from "react";
-
+import { Card, Code, CopyButton, Fieldset, Stack, TextInput, Title, Tooltip } from "@mantine/core";
 import classes from "../main.module.css";
 
 const Hash = () => {
