@@ -10,7 +10,7 @@ export default defineConfig({
 		...oxlint,
 		overrides: [
 			{
-				files: ["**/scripts/**.ts"],
+				files: ["**/deploy.ts"],
 				rules: {
 					"no-console": "off",
 				},

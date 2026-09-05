@@ -7,7 +7,8 @@
 		"build": "vp build",
 		"dev": "vp dev",
 		"format": "vp fmt .",
-		"prepare": "vp config"
+		"prepare": "vp config",
+		"deploy": "vp build && node deploy.ts"
 	},
 	"dependencies": {
 		"@hyper-fetch/core": "^8.2.4",
