@@ -1,11 +1,9 @@
 import React, { lazy } from "react";
 import { Center } from "@mantine/core";
 import classes from "./main.module.css";
-const Passphrase = lazy(() => import("./pages/Passphrase"));
 const IP = lazy(() => import("./pages/IP"));
 const UserAgent = lazy(() => import("./pages/UserAgent"));
 const Password = lazy(() => import("./pages/Password"));
-const Hash = lazy(() => import("./pages/Hash"));
 const Mac = lazy(() => import("./pages/MAC"));
 const DateTime = lazy(() => import("./pages/DateTime"));
 const Convert = lazy(() => import("./pages/Convert"));
@@ -20,8 +18,6 @@ const Main = () => {
 				<IP />
 				<UserAgent />
 				<Password />
-				<Passphrase />
-				<Hash />
 				<Mac />
 				<DateTime />
 				<Convert />
