@@ -10,7 +10,6 @@ const Convert = lazy(() => import("./pages/Convert"));
 const ConvertFile = lazy(() => import("./pages/ConvertFile"));
 const DHCP = lazy(() => import("./pages/DHCP"));
 const DID = lazy(() => import("./pages/DID"));
-const TOTP = lazy(() => import("./pages/TOTP"));
 
 const Main = () => {
 	return (
@@ -20,7 +19,6 @@ const Main = () => {
 				<UserAgent />
 				<Password />
 				<Mac />
-				<TOTP />
 				<DateTime />
 				<Convert />
 				<ConvertFile />
